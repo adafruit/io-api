@@ -299,7 +299,7 @@
                 "summary": "All data for current feed",
                 "description": "",
                 "tags": [
-                    "Feeds"
+                    "Data"
                 ],
                 "parameters": [
                     {
@@ -544,7 +544,7 @@
                 "summary": "Next Data in Queue",
                 "description": "",
                 "x-swagger-router-controller": "Data",
-                "operationId": "previous",
+                "operationId": "next",
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -823,7 +823,7 @@
                     }
                 ],
                 "tags": [
-                    "Groups"
+                    "Data"
                 ],
                 "responses": {
                     "200": {
@@ -898,7 +898,7 @@
                     }
                 ],
                 "tags": [
-                    "Group"
+                    "Groups"
                 ],
                 "responses": {
                     "200": {

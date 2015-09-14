@@ -99,10 +99,7 @@
                     "200": {
                         "description": "New feed",
                         "schema": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Feed"
-                            }
+                            "$ref": "#/definitions/Feed"
                         }
                     },
                     "default": {
@@ -127,10 +124,7 @@
                     "200": {
                         "description": "Feed response",
                         "schema": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Feed"
-                            }
+                            "$ref": "#/definitions/Feed"
                         }
                     },
                     "default": {
@@ -195,9 +189,7 @@
                         "description": "Updated feed",
                         "schema": {
                             "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Feed"
-                            }
+                            "$ref": "#/definitions/Feed"
                         }
                     },
                     "default": {
@@ -245,10 +237,7 @@
                     "200": {
                         "description": "Updated feed",
                         "schema": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Feed"
-                            }
+                            "$ref": "#/definitions/Feed"
                         }
                     },
                     "default": {
@@ -377,10 +366,7 @@
                     "200": {
                         "description": "New data",
                         "schema": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Data"
-                            }
+                            "$ref": "#/definitions/Data"
                         }
                     },
                     "default": {
@@ -442,10 +428,7 @@
                     "200": {
                         "description": "New data",
                         "schema": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Data"
-                            }
+                            "$ref": "#/definitions/Data"
                         }
                     },
                     "default": {
@@ -484,9 +467,7 @@
                         "description": "Data response",
                         "schema": {
                             "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Data"
-                            }
+                            "$ref": "#/definitions/Data"
                         }
                     },
                     "default": {
@@ -525,9 +506,7 @@
                         "description": "Data response",
                         "schema": {
                             "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Data"
-                            }
+                            "$ref": "#/definitions/Data"
                         }
                     },
                     "default": {
@@ -565,10 +544,7 @@
                     "200": {
                         "description": "Data response",
                         "schema": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Data"
-                            }
+                            "$ref": "#/definitions/Data"
                         }
                     },
                     "default": {
@@ -606,10 +582,7 @@
                     "200": {
                         "description": "Data response",
                         "schema": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Data"
-                            }
+                            "$ref": "#/definitions/Data"
                         }
                     },
                     "default": {
@@ -623,8 +596,8 @@
         },
         "/feeds/{feed_id}/data/{id}": {
             "get": {
-                "description": "Returns data based on ID",
-                "summary": "",
+                "summary": "Returns data based on ID",
+                "description": "",
                 "x-swagger-router-controller": "Data",
                 "operationId": "get",
                 "tags": [
@@ -634,10 +607,7 @@
                     "200": {
                         "description": "Data response",
                         "schema": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Data"
-                            }
+                            "$ref": "#/definitions/Data"
                         }
                     },
                     "default": {
@@ -720,10 +690,7 @@
                     "200": {
                         "description": "Updated Data",
                         "schema": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Data"
-                            }
+                            "$ref": "#/definitions/Data"
                         }
                     },
                     "default": {
@@ -787,10 +754,7 @@
                     "200": {
                         "description": "Updated Data",
                         "schema": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Data"
-                            }
+                            "$ref": "#/definitions/Data"
                         }
                     },
                     "default": {
@@ -843,10 +807,10 @@
         },
         "/groups": {
             "get": {
-                "x-swagger-router-controller": "Groups",
-                "operationId": "all",
                 "summary": "All groups for current user",
                 "description": "The Groups endpoint returns information about the user's groups.\nThe response includes the latest value of each feed in the group, and other\nmetadata about the group.\n",
+                "x-swagger-router-controller": "Groups",
+                "operationId": "all",
                 "tags": [
                     "Groups"
                 ],
@@ -904,10 +868,7 @@
                     "200": {
                         "description": "New Group",
                         "schema": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Group"
-                            }
+                            "$ref": "#/definitions/Group"
                         }
                     },
                     "default": {
@@ -921,8 +882,8 @@
         },
         "/groups/{id}": {
             "get": {
-                "description": "Returns Group based on ID",
-                "summary": "",
+                "summary": "Returns Group based on ID",
+                "description": "",
                 "x-swagger-router-controller": "Groups",
                 "operationId": "get",
                 "tags": [
@@ -933,9 +894,7 @@
                         "description": "Group response",
                         "schema": {
                             "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Group"
-                            }
+                            "$ref": "#/definitions/Group"
                         }
                     },
                     "default": {
@@ -998,10 +957,7 @@
                     "200": {
                         "description": "Updated group",
                         "schema": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Group"
-                            }
+                            "$ref": "#/definitions/Group"
                         }
                     },
                     "default": {
@@ -1052,10 +1008,7 @@
                     "200": {
                         "description": "Updated Group",
                         "schema": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/definitions/Group"
-                            }
+                            "$ref": "#/definitions/Group"
                         }
                     },
                     "default": {
@@ -1116,9 +1069,11 @@
     },
     "definitions": {
         "Group": {
+            "type": "object",
             "properties": {
                 "id": {
-                    "type": "number"
+                    "type": "number",
+                    "readOnly": true
                 },
                 "name": {
                     "type": "string"
@@ -1128,14 +1083,17 @@
                 },
                 "feeds": {
                     "type": "array",
+                    "readOnly": true,
                     "items": {
                         "$ref": "#/definitions/Feed"
                     }
                 },
                 "created_at": {
-                    "type": "string"
+                    "type": "string",
+                    "readOnly": true
                 },
                 "updated_at": {
+                    "readOnly": true,
                     "type": "string"
                 }
             }
@@ -1200,18 +1158,11 @@
             }
         },
         "Data": {
-            "required": [
-                "value"
-            ],
-            "example": {
-                "value": 11,
-                "lat": 30,
-                "lng": -82,
-                "ele": 42
-            },
+            "type": "object",
             "properties": {
                 "id": {
-                    "type": "number"
+                    "type": "number",
+                    "readOnly": true
                 },
                 "value": {
                     "type": "string"
@@ -1223,6 +1174,7 @@
                     "type": "number"
                 },
                 "group_id": {
+                    "readOnly": true,
                     "type": "number"
                 },
                 "expiration": {
@@ -1238,15 +1190,19 @@
                     "type": "number"
                 },
                 "completed_at": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "created_at": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "updated_at": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "created_epoch": {
+                    "readOnly": true,
                     "type": "number"
                 }
             }

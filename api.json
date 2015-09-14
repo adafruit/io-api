@@ -76,6 +76,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
+                            "type": "object",
                             "example": {
                                 "name": "testing",
                                 "key": "tester",
@@ -339,6 +340,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
+                            "type": "object",
                             "required": [
                                 "value"
                             ],
@@ -401,6 +403,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
+                            "type": "object",
                             "required": [
                                 "value"
                             ],
@@ -663,6 +666,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
+                            "type": "object",
                             "required": [
                                 "value"
                             ],
@@ -730,6 +734,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
+                            "type": "object",
                             "properties": {
                                 "value": {
                                     "type": "string"
@@ -847,6 +852,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
+                            "type": "object",
                             "required": [
                                 "name"
                             ],
@@ -893,7 +899,6 @@
                     "200": {
                         "description": "Group response",
                         "schema": {
-                            "type": "object",
                             "$ref": "#/definitions/Group"
                         }
                     },
@@ -936,6 +941,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
+                            "type": "object",
                             "required": [
                                 "name"
                             ],
@@ -990,6 +996,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
+                            "type": "object",
                             "properties": {
                                 "name": {
                                     "type": "string"

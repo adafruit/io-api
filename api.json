@@ -31,15 +31,6 @@
                 "operationId": "all",
                 "summary": "All feeds for current user",
                 "description": "The Feeds endpoint returns information about the user's feeds. The response includes the latest value of each feed, and other metadata about each feed.",
-                "parameters": [
-                    {
-                        "name": "group_id",
-                        "in": "query",
-                        "description": "If the group_id is present, then this is a nested resource looking for the feeds in a group.",
-                        "required": false,
-                        "type": "number"
-                    }
-                ],
                 "tags": [
                     "Feeds"
                 ],
@@ -72,25 +63,7 @@
                 ],
                 "parameters": [
                     {
-                        "name": "feed",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "example": {
-                                "name": "testing",
-                                "key": "tester",
-                                "description": "new test feed",
-                                "unit_type": "Fahrenheit Temperature",
-                                "unit_symbol": "°F",
-                                "visibility": "public",
-                                "license": "CC BY-SA 2.0"
-                            },
-                            "required": [
-                                "name"
-                            ],
-                            "$ref": "#/definitions/Feed"
-                        }
+                        "$ref": "#/parameters/Feed"
                     }
                 ],
                 "tags": [
@@ -163,23 +136,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "feed",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "example": {
-                                "name": "temperature",
-                                "key": "temp",
-                                "description": "test feed",
-                                "visibility": "public",
-                                "license": "CC BY-SA 2.0"
-                            },
-                            "required": [
-                                "name"
-                            ],
-                            "$ref": "#/definitions/Feed"
-                        }
+                        "$ref": "#/parameters/Feed"
                     }
                 ],
                 "tags": [
@@ -219,16 +176,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "feed",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "example": {
-                                "visibility": "public"
-                            },
-                            "$ref": "#/definitions/Feed"
-                        }
+                        "$ref": "#/parameters/Feed"
                     }
                 ],
                 "tags": [
@@ -336,29 +284,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "value"
-                            ],
-                            "properties": {
-                                "value": {
-                                    "type": "string"
-                                },
-                                "lat": {
-                                    "type": "string"
-                                },
-                                "lon": {
-                                    "type": "string"
-                                },
-                                "ele": {
-                                    "type": "string"
-                                }
-                            }
-                        }
+                        "$ref": "#/parameters/Data"
                     }
                 ],
                 "tags": [
@@ -399,29 +325,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "value"
-                            ],
-                            "properties": {
-                                "value": {
-                                    "type": "string"
-                                },
-                                "lat": {
-                                    "type": "string"
-                                },
-                                "lon": {
-                                    "type": "string"
-                                },
-                                "ele": {
-                                    "type": "string"
-                                }
-                            }
-                        }
+                        "$ref": "#/parameters/Data"
                     }
                 ],
                 "tags": [
@@ -662,29 +566,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "value"
-                            ],
-                            "properties": {
-                                "value": {
-                                    "type": "string"
-                                },
-                                "lat": {
-                                    "type": "string"
-                                },
-                                "lon": {
-                                    "type": "string"
-                                },
-                                "ele": {
-                                    "type": "string"
-                                }
-                            }
-                        }
+                        "$ref": "#/parameters/Data"
                     }
                 ],
                 "tags": [
@@ -730,26 +612,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "value": {
-                                    "type": "string"
-                                },
-                                "lat": {
-                                    "type": "string"
-                                },
-                                "lon": {
-                                    "type": "string"
-                                },
-                                "ele": {
-                                    "type": "string"
-                                }
-                            }
-                        }
+                        "$ref": "#/parameters/Data"
                     }
                 ],
                 "tags": [
@@ -848,23 +711,7 @@
                 ],
                 "parameters": [
                     {
-                        "name": "group",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "name"
-                            ],
-                            "properties": {
-                                "name": {
-                                    "type": "string"
-                                },
-                                "description": {
-                                    "type": "string"
-                                }
-                            }
-                        }
+                        "$ref": "#/parameters/Group"
                     }
                 ],
                 "tags": [
@@ -937,23 +784,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "group",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "name"
-                            ],
-                            "properties": {
-                                "name": {
-                                    "type": "string"
-                                },
-                                "description": {
-                                    "type": "string"
-                                }
-                            }
-                        }
+                        "$ref": "#/parameters/Group"
                     }
                 ],
                 "tags": [
@@ -992,20 +823,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "group",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "name": {
-                                    "type": "string"
-                                },
-                                "description": {
-                                    "type": "string"
-                                }
-                            }
-                        }
+                        "$ref": "#/parameters/Group"
                     }
                 ],
                 "tags": [
@@ -1055,6 +873,79 @@
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
+                    }
+                }
+            }
+        }
+    },
+    "parameters": {
+        "Data": {
+            "name": "group",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Feed": {
+            "name": "feed",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "unit_type": {
+                        "type": "string"
+                    },
+                    "unit_symbol": {
+                        "type": "string"
+                    },
+                    "visibility": {
+                        "type": "string",
+                        "default": "private",
+                        "enum": [
+                            "private",
+                            "public"
+                        ]
+                    },
+                    "license": {
+                        "type": "string"
+                    },
+                    "group_id": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Group": {
+            "name": "group",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
                     }
                 }
             }

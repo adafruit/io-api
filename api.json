@@ -886,10 +886,16 @@
             "schema": {
                 "type": "object",
                 "properties": {
-                    "name": {
+                    "value": {
                         "type": "string"
                     },
-                    "description": {
+                    "lat": {
+                        "type": "string"
+                    },
+                    "lon": {
+                        "type": "string"
+                    },
+                    "ele": {
                         "type": "string"
                     }
                 }

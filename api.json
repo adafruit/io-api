@@ -880,7 +880,7 @@
     },
     "parameters": {
         "Data": {
-            "name": "group",
+            "name": "data",
             "in": "body",
             "required": true,
             "schema": {

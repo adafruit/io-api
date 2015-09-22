@@ -556,11 +556,14 @@
                             "$ref": "#/definitions/Data"
                         }
                     },
-                    "default": {
-                        "description": "Error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
                     }
                 },
                 "parameters": [
@@ -803,11 +806,14 @@
                             "$ref": "#/definitions/Group"
                         }
                     },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error\""
                     }
                 },
                 "parameters": [

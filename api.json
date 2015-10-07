@@ -3,7 +3,7 @@
     "info": {
         "title": "Adafruit IO",
         "description": "The Internet of Things for Everyone",
-        "version": "1.0.0"
+        "version": "1.1.0"
     },
     "host": "io.adafruit.com",
     "schemes": [
@@ -1005,6 +1005,9 @@
                     },
                     "group_id": {
                         "type": "string"
+                    },
+                    "history": {
+                        "type": "boolean"
                     }
                 }
             }
@@ -1092,6 +1095,9 @@
                 },
                 "unit_symbol": {
                     "type": "string"
+                },
+                "history": {
+                    "type": "boolean"
                 },
                 "visibility": {
                     "type": "string",

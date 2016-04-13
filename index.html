@@ -40,7 +40,7 @@
 
     <script type="text/javascript">
         $(function () {
-            var url = "api.json";
+            var url = /v2$/.test(window.location.href) ? 'v2.json' : "v1.json";
 
             window.swaggerUi = new SwaggerUi({
                 url: url,

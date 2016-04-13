@@ -1,0 +1,2278 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Adafruit IO",
+        "description": "The Internet of Things for Everyone",
+        "version": "2.0.0"
+    },
+    "host": "io.adafruit.com",
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "basePath": "/api/v2",
+    "produces": [
+        "application/json",
+        "application/xml",
+        "text/csv"
+    ],
+    "security": [
+        {
+            "HeaderKey": []
+        },
+        {
+            "HeaderSignature": []
+        },
+        {
+            "QueryKey": []
+        }
+    ],
+    "paths": {
+        "/{username}/feeds": {
+            "get": {
+                "x-swagger-router-controller": "Feeds",
+                "x-swagger-router-action": "all",
+                "operationId": "allFeeds",
+                "summary": "All feeds for current user",
+                "description": "The Feeds endpoint returns information about the user's feeds. The response includes the latest value of each feed, and other metadata about each feed.",
+                "tags": [
+                    "Feeds"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of feeds",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Feed"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a new Feed",
+                "description": "",
+                "x-swagger-router-controller": "Feeds",
+                "x-swagger-router-action": "create",
+                "operationId": "createFeed",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    }
+                ],
+                "tags": [
+                    "Feeds"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New feed",
+                        "schema": {
+                            "$ref": "#/definitions/Feed"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/feeds/{feed_key}": {
+            "get": {
+                "description": "Returns feed based on the feed key",
+                "summary": "Get feed by feed key",
+                "x-swagger-router-controller": "Feeds",
+                "x-swagger-router-action": "get",
+                "operationId": "getFeed",
+                "tags": [
+                    "Feeds"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Feed response",
+                        "schema": {
+                            "$ref": "#/definitions/Feed"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Feed"
+                    }
+                ]
+            },
+            "put": {
+                "summary": "Replace an existing Feed",
+                "x-swagger-router-controller": "Feeds",
+                "x-swagger-router-action": "replace",
+                "operationId": "replaceFeed",
+                "description": "",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Feed"
+                    }
+                ],
+                "tags": [
+                    "Feeds"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated feed",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/Feed"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update properties of an existing Feed",
+                "description": "",
+                "x-swagger-router-controller": "Feeds",
+                "x-swagger-router-action": "update",
+                "operationId": "updateFeed",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Feed"
+                    }
+                ],
+                "tags": [
+                    "Feeds"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated feed",
+                        "schema": {
+                            "$ref": "#/definitions/Feed"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete an existing Feed",
+                "description": "",
+                "x-swagger-router-controller": "Feeds",
+                "x-swagger-router-action": "destroy",
+                "operationId": "destroyFeed",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    }
+                ],
+                "tags": [
+                    "Feeds"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted feed successfully"
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/feeds/{feed_key}/data": {
+            "get": {
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "all",
+                "operationId": "allData",
+                "summary": "All data for current feed",
+                "description": "",
+                "tags": [
+                    "Data"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of data",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Data"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create new Data",
+                "description": "",
+                "x-swagger-router-controller": "Data",
+                "operationId": "create",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Data"
+                    }
+                ],
+                "tags": [
+                    "Data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New data",
+                        "schema": {
+                            "$ref": "#/definitions/Data"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/feeds/{feed_key}/data/previous": {
+            "get": {
+                "summary": "Previous Data in Queue",
+                "description": "",
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "previous",
+                "operationId": "previousData",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    }
+                ],
+                "tags": [
+                    "Data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data response",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/Data"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/feeds/{feed_key}/data/next": {
+            "get": {
+                "summary": "Next Data in Queue",
+                "description": "",
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "next",
+                "operationId": "nextData",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    }
+                ],
+                "tags": [
+                    "Data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data response",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/Data"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/feeds/{feed_key}/data/last": {
+            "get": {
+                "summary": "Last Data in Queue",
+                "description": "",
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "last",
+                "operationId": "lastData",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    }
+                ],
+                "tags": [
+                    "Data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data response",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/Data"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/feeds/{feed_key}/data/{id}'": {
+            "get": {
+                "summary": "Returns data based on feed key",
+                "description": "",
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "get",
+                "operationId": "getData",
+                "tags": [
+                    "Data"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data response",
+                        "schema": {
+                            "$ref": "#/definitions/Data"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Replace existing Data",
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "replace",
+                "operationId": "replaceData",
+                "description": "",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Data"
+                    }
+                ],
+                "tags": [
+                    "Data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated Data",
+                        "schema": {
+                            "$ref": "#/definitions/Data"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update properties of existing Data",
+                "description": "",
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "update",
+                "operationId": "updateData",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Data"
+                    }
+                ],
+                "tags": [
+                    "Data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated Data",
+                        "schema": {
+                            "$ref": "#/definitions/Data"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete existing Data",
+                "description": "",
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "destroy",
+                "operationId": "destroyData",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    }
+                ],
+                "tags": [
+                    "Data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted Group successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/groups": {
+            "get": {
+                "summary": "All groups for current user",
+                "description": "The Groups endpoint returns information about the user's groups. The response includes the latest value of each feed in the group, and other metadata about the group.\n",
+                "x-swagger-router-controller": "Groups",
+                "x-swagger-router-action": "all",
+                "operationId": "allGroups",
+                "tags": [
+                    "Groups"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of groups",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Group"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a new Group",
+                "description": "",
+                "x-swagger-router-controller": "Groups",
+                "x-swagger-router-action": "Groups",
+                "operationId": "createGroup",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/Group"
+                    }
+                ],
+                "tags": [
+                    "Groups"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Group",
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/groups/{group_key}": {
+            "get": {
+                "summary": "Returns Group based on ID",
+                "description": "",
+                "x-swagger-router-controller": "Groups",
+                "operationId": "get",
+                "tags": [
+                    "Groups"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/GroupPath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Group response",
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error\""
+                    }
+                }
+            },
+            "put": {
+                "summary": "Replace an existing Group",
+                "x-swagger-router-controller": "Groups",
+                "x-swagger-router-action": "replace",
+                "operationId": "replaceGroup",
+                "description": "",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/GroupPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Group"
+                    }
+                ],
+                "tags": [
+                    "Groups"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated group",
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update properties of an existing Group",
+                "description": "",
+                "x-swagger-router-controller": "Groups",
+                "x-swagger-router-action": "update",
+                "operationId": "updateGroup",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/GroupPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Group"
+                    }
+                ],
+                "tags": [
+                    "Groups"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated Group",
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete an existing Group",
+                "description": "",
+                "x-swagger-router-controller": "Groups",
+                "x-swagger-router-action": "destroy",
+                "operationId": "destroyGroup",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/GroupPath"
+                    }
+                ],
+                "tags": [
+                    "Groups"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted Group successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/dashboards": {
+            "get": {
+                "summary": "All dashboards for current user",
+                "description": "The Dashboards endpoint returns information about the user's dashboards.\n",
+                "x-swagger-router-controller": "Dashboards",
+                "x-swagger-router-action": "all",
+                "operationId": "allDashboards",
+                "tags": [
+                    "Dashboards"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of dashboards",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Dashboard"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a new Dashboard",
+                "description": "",
+                "x-swagger-router-controller": "Dashboards",
+                "x-swagger-router-action": "Dashboards",
+                "operationId": "createDashboard",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/Dashboard"
+                    }
+                ],
+                "tags": [
+                    "Dashboards"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Dashboard",
+                        "schema": {
+                            "$ref": "#/definitions/Dashboard"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/dashboards/{id}": {
+            "get": {
+                "summary": "Returns Dashboard based on ID",
+                "description": "",
+                "x-swagger-router-controller": "Dashboards",
+                "operationId": "get",
+                "tags": [
+                    "Dashboards"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dashboard response",
+                        "schema": {
+                            "$ref": "#/definitions/Dashboard"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error\""
+                    }
+                }
+            },
+            "put": {
+                "summary": "Replace an existing Dashboard",
+                "x-swagger-router-controller": "Dashboards",
+                "x-swagger-router-action": "replace",
+                "operationId": "replaceDashboard",
+                "description": "",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Dashboard"
+                    }
+                ],
+                "tags": [
+                    "Dashboards"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated dashboard",
+                        "schema": {
+                            "$ref": "#/definitions/Dashboard"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update properties of an existing Dashboard",
+                "description": "",
+                "x-swagger-router-controller": "Dashboards",
+                "x-swagger-router-action": "update",
+                "operationId": "updateDashboard",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Dashboard"
+                    }
+                ],
+                "tags": [
+                    "Dashboards"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated Dashboard",
+                        "schema": {
+                            "$ref": "#/definitions/Dashboard"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete an existing Dashboard",
+                "description": "",
+                "x-swagger-router-controller": "Dashboards",
+                "x-swagger-router-action": "destroy",
+                "operationId": "destroyDashboard",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    }
+                ],
+                "tags": [
+                    "Dashboards"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted Dashboard successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/dashboards/{dashboard_id}/blocks": {
+            "get": {
+                "summary": "All blocks for current user",
+                "description": "The Blocks endpoint returns information about the user's blocks.\n",
+                "x-swagger-router-controller": "Blocks",
+                "x-swagger-router-action": "all",
+                "operationId": "allBlocks",
+                "tags": [
+                    "Blocks"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of blocks",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Block"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a new Block",
+                "description": "",
+                "x-swagger-router-controller": "Blocks",
+                "x-swagger-router-action": "Blocks",
+                "operationId": "createBlock",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/Block"
+                    }
+                ],
+                "tags": [
+                    "Blocks"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Block",
+                        "schema": {
+                            "$ref": "#/definitions/Block"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/dashboards/{dashboard_id}/blocks/{id}": {
+            "get": {
+                "summary": "Returns Block based on ID",
+                "description": "",
+                "x-swagger-router-controller": "Blocks",
+                "operationId": "get",
+                "tags": [
+                    "Blocks"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Block response",
+                        "schema": {
+                            "$ref": "#/definitions/Block"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error\""
+                    }
+                }
+            },
+            "put": {
+                "summary": "Replace an existing Block",
+                "x-swagger-router-controller": "Blocks",
+                "x-swagger-router-action": "replace",
+                "operationId": "replaceBlock",
+                "description": "",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Block"
+                    }
+                ],
+                "tags": [
+                    "Blocks"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated block",
+                        "schema": {
+                            "$ref": "#/definitions/Block"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update properties of an existing Block",
+                "description": "",
+                "x-swagger-router-controller": "Blocks",
+                "x-swagger-router-action": "update",
+                "operationId": "updateBlock",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Block"
+                    }
+                ],
+                "tags": [
+                    "Blocks"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated Block",
+                        "schema": {
+                            "$ref": "#/definitions/Block"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete an existing Block",
+                "description": "",
+                "x-swagger-router-controller": "Blocks",
+                "x-swagger-router-action": "destroy",
+                "operationId": "destroyBlock",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    }
+                ],
+                "tags": [
+                    "Blocks"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted Block successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/tokens": {
+            "get": {
+                "summary": "All tokens for current user",
+                "description": "The Tokens endpoint returns information about the user's tokens.\n",
+                "x-swagger-router-controller": "Tokens",
+                "x-swagger-router-action": "all",
+                "operationId": "allTokens",
+                "tags": [
+                    "Tokens"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of tokens",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Token"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a new Token",
+                "description": "",
+                "x-swagger-router-controller": "Tokens",
+                "x-swagger-router-action": "Tokens",
+                "operationId": "createToken",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/Token"
+                    }
+                ],
+                "tags": [
+                    "Tokens"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Token",
+                        "schema": {
+                            "$ref": "#/definitions/Token"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/tokens/{id}": {
+            "get": {
+                "summary": "Returns Token based on ID",
+                "description": "",
+                "x-swagger-router-controller": "Tokens",
+                "operationId": "get",
+                "tags": [
+                    "Tokens"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Token response",
+                        "schema": {
+                            "$ref": "#/definitions/Token"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error\""
+                    }
+                }
+            },
+            "put": {
+                "summary": "Replace an existing Token",
+                "x-swagger-router-controller": "Tokens",
+                "x-swagger-router-action": "replace",
+                "operationId": "replaceToken",
+                "description": "",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Token"
+                    }
+                ],
+                "tags": [
+                    "Tokens"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated token",
+                        "schema": {
+                            "$ref": "#/definitions/Token"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update properties of an existing Token",
+                "description": "",
+                "x-swagger-router-controller": "Tokens",
+                "x-swagger-router-action": "update",
+                "operationId": "updateToken",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Token"
+                    }
+                ],
+                "tags": [
+                    "Tokens"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated Token",
+                        "schema": {
+                            "$ref": "#/definitions/Token"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete an existing Token",
+                "description": "",
+                "x-swagger-router-controller": "Tokens",
+                "x-swagger-router-action": "destroy",
+                "operationId": "destroyToken",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    }
+                ],
+                "tags": [
+                    "Tokens"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted Token successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/triggers": {
+            "get": {
+                "summary": "All triggers for current user",
+                "description": "The Triggers endpoint returns information about the user's triggers.\n",
+                "x-swagger-router-controller": "Triggers",
+                "x-swagger-router-action": "all",
+                "operationId": "allTriggers",
+                "tags": [
+                    "Triggers"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of triggers",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Trigger"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a new Trigger",
+                "description": "",
+                "x-swagger-router-controller": "Triggers",
+                "x-swagger-router-action": "Triggers",
+                "operationId": "createTrigger",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/Trigger"
+                    }
+                ],
+                "tags": [
+                    "Triggers"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Trigger",
+                        "schema": {
+                            "$ref": "#/definitions/Trigger"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/triggers/{id}": {
+            "get": {
+                "summary": "Returns Trigger based on ID",
+                "description": "",
+                "x-swagger-router-controller": "Triggers",
+                "operationId": "get",
+                "tags": [
+                    "Triggers"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trigger response",
+                        "schema": {
+                            "$ref": "#/definitions/Trigger"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error\""
+                    }
+                }
+            },
+            "put": {
+                "summary": "Replace an existing Trigger",
+                "x-swagger-router-controller": "Triggers",
+                "x-swagger-router-action": "replace",
+                "operationId": "replaceTrigger",
+                "description": "",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Trigger"
+                    }
+                ],
+                "tags": [
+                    "Triggers"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated trigger",
+                        "schema": {
+                            "$ref": "#/definitions/Trigger"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update properties of an existing Trigger",
+                "description": "",
+                "x-swagger-router-controller": "Triggers",
+                "x-swagger-router-action": "update",
+                "operationId": "updateTrigger",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Trigger"
+                    }
+                ],
+                "tags": [
+                    "Triggers"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated Trigger",
+                        "schema": {
+                            "$ref": "#/definitions/Trigger"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete an existing Trigger",
+                "description": "",
+                "x-swagger-router-controller": "Triggers",
+                "x-swagger-router-action": "destroy",
+                "operationId": "destroyTrigger",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    }
+                ],
+                "tags": [
+                    "Triggers"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted Trigger successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/{type}/{type_id}/permissions": {
+            "get": {
+                "summary": "All permissions for current user",
+                "description": "The Permissions endpoint returns information about the user's permissions.\n",
+                "x-swagger-router-controller": "Permissions",
+                "x-swagger-router-action": "all",
+                "operationId": "allPermissions",
+                "tags": [
+                    "Permissions"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of permissions",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Permission"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a new Permission",
+                "description": "",
+                "x-swagger-router-controller": "Permissions",
+                "x-swagger-router-action": "Permissions",
+                "operationId": "createPermission",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/Permission"
+                    }
+                ],
+                "tags": [
+                    "Permissions"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Permission",
+                        "schema": {
+                            "$ref": "#/definitions/Permission"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/{type}/{type_id}/permissions/{id}": {
+            "get": {
+                "summary": "Returns Permission based on ID",
+                "description": "",
+                "x-swagger-router-controller": "Permissions",
+                "operationId": "get",
+                "tags": [
+                    "Permissions"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Permission response",
+                        "schema": {
+                            "$ref": "#/definitions/Permission"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error\""
+                    }
+                }
+            },
+            "put": {
+                "summary": "Replace an existing Permission",
+                "x-swagger-router-controller": "Permissions",
+                "x-swagger-router-action": "replace",
+                "operationId": "replacePermission",
+                "description": "",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Permission"
+                    }
+                ],
+                "tags": [
+                    "Permissions"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated permission",
+                        "schema": {
+                            "$ref": "#/definitions/Permission"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update properties of an existing Permission",
+                "description": "",
+                "x-swagger-router-controller": "Permissions",
+                "x-swagger-router-action": "update",
+                "operationId": "updatePermission",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Permission"
+                    }
+                ],
+                "tags": [
+                    "Permissions"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated Permission",
+                        "schema": {
+                            "$ref": "#/definitions/Permission"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete an existing Permission",
+                "description": "",
+                "x-swagger-router-controller": "Permissions",
+                "x-swagger-router-action": "destroy",
+                "operationId": "destroyPermission",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/IDPath"
+                    }
+                ],
+                "tags": [
+                    "Permissions"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted Permission successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        }
+    },
+    "parameters": {
+        "UsernamePath": {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+        },
+        "FeedPath": {
+            "name": "feed_key",
+            "in": "path",
+            "description": "The key of the feed",
+            "required": true,
+            "type": "string"
+        },
+        "GroupPath": {
+            "name": "group_key",
+            "in": "path",
+            "description": "The key of the group",
+            "required": true,
+            "type": "string"
+        },
+        "IDPath": {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+        },
+        "Data": {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "type": "string"
+                    },
+                    "lat": {
+                        "type": "string"
+                    },
+                    "lon": {
+                        "type": "string"
+                    },
+                    "ele": {
+                        "type": "string"
+                    },
+                    "epoch": {
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        "Feed": {
+            "name": "feed",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "license": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Group": {
+            "name": "group",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "key": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "HeaderKey": {
+            "description": "The AIO Key is used to restrict or grant access to your data. The key is unique, and you can generate a key per feed, and control it in many different ways. The easiest process is to just use your automatically generated master key. You can access this key right from the right-hand side of your dashboard or from an individual feed page.",
+            "type": "apiKey",
+            "in": "header",
+            "name": "X-AIO-Key"
+        },
+        "QueryKey": {
+            "description": "The AIO Key is used to restrict or grant access to your data. The key is unique, and you can generate a key per feed, and control it in many different ways. The easiest process is to just use your automatically generated master key. You can access this key right from the right-hand side of your dashboard or from an individual feed page.",
+            "type": "apiKey",
+            "in": "query",
+            "name": "X-AIO-Key"
+        },
+        "HeaderSignature": {
+            "description": "The AIO Signature is an AWS inspired request signature.",
+            "type": "apiKey",
+            "in": "header",
+            "name": "X-AIO-Signature"
+        }
+    },
+    "definitions": {
+        "Group": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "readOnly": true
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "feeds": {
+                    "type": "array",
+                    "readOnly": true,
+                    "items": {
+                        "$ref": "#/definitions/Feed"
+                    }
+                },
+                "created_at": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "updated_at": {
+                    "readOnly": true,
+                    "type": "string"
+                }
+            }
+        },
+        "Feed": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "readOnly": true
+                },
+                "name": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "unit_type": {
+                    "type": "string"
+                },
+                "unit_symbol": {
+                    "type": "string"
+                },
+                "history": {
+                    "type": "boolean"
+                },
+                "visibility": {
+                    "type": "string",
+                    "default": "private",
+                    "enum": [
+                        "private",
+                        "public"
+                    ]
+                },
+                "license": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "readOnly": true
+                },
+                "last_value": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "status": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "group_id": {
+                    "type": "number",
+                    "readOnly": true
+                },
+                "created_at": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "updated_at": {
+                    "type": "string",
+                    "readOnly": true
+                }
+            }
+        },
+        "Data": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "readOnly": true
+                },
+                "value": {
+                    "type": "string"
+                },
+                "feed_id": {
+                    "type": "number"
+                },
+                "group_id": {
+                    "readOnly": true,
+                    "type": "number"
+                },
+                "expiration": {
+                    "type": "string"
+                },
+                "lat": {
+                    "type": "number"
+                },
+                "lon": {
+                    "type": "number"
+                },
+                "ele": {
+                    "type": "number"
+                },
+                "completed_at": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "created_at": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "updated_at": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "created_epoch": {
+                    "readOnly": true,
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

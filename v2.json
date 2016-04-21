@@ -2117,7 +2117,7 @@
             }
         },
         "Permission": {
-            "name": "feed",
+            "name": "permission",
             "in": "body",
             "required": true,
             "schema": {

@@ -77,6 +77,9 @@
                 "parameters": [
                     {
                         "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/Feed"
                     }
                 ],
                 "tags": [
@@ -134,9 +137,6 @@
                     },
                     {
                         "$ref": "#/parameters/FeedPath"
-                    },
-                    {
-                        "$ref": "#/parameters/Feed"
                     }
                 ]
             },
@@ -1788,9 +1788,9 @@
                 }
             }
         },
-        "/{username}/{type}/{type_id}/permissions": {
+        "/{username}/permissions/{type}/{type_id}": {
             "get": {
-                "summary": "All permissions for current user",
+                "summary": "All permissions for current user and type",
                 "description": "The Permissions endpoint returns information about the user's permissions.\n",
                 "x-swagger-router-controller": "Permissions",
                 "x-swagger-router-action": "all",
@@ -1801,6 +1801,12 @@
                 "parameters": [
                     {
                         "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/PermTypePath"
+                    },
+                    {
+                        "$ref": "#/parameters/PermTypeIDPath"
                     }
                 ],
                 "responses": {
@@ -1839,6 +1845,12 @@
                         "$ref": "#/parameters/UsernamePath"
                     },
                     {
+                        "$ref": "#/parameters/PermTypePath"
+                    },
+                    {
+                        "$ref": "#/parameters/PermTypeIDPath"
+                    },
+                    {
                         "$ref": "#/parameters/Permission"
                     }
                 ],
@@ -1864,18 +1876,24 @@
                 }
             }
         },
-        "/{username}/{type}/{type_id}/permissions/{id}": {
+        "/{username}/permissions/{type}/{type_id}/{id}": {
             "get": {
                 "summary": "Returns Permission based on ID",
                 "description": "",
                 "x-swagger-router-controller": "Permissions",
-                "operationId": "get",
+                "operationId": "getPermission",
                 "tags": [
                     "Permissions"
                 ],
                 "parameters": [
                     {
                         "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/PermTypePath"
+                    },
+                    {
+                        "$ref": "#/parameters/PermTypeIDPath"
                     },
                     {
                         "$ref": "#/parameters/IDPath"
@@ -1912,6 +1930,12 @@
                 "parameters": [
                     {
                         "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/PermTypePath"
+                    },
+                    {
+                        "$ref": "#/parameters/PermTypeIDPath"
                     },
                     {
                         "$ref": "#/parameters/IDPath"
@@ -1956,6 +1980,12 @@
                         "$ref": "#/parameters/UsernamePath"
                     },
                     {
+                        "$ref": "#/parameters/PermTypePath"
+                    },
+                    {
+                        "$ref": "#/parameters/PermTypeIDPath"
+                    },
+                    {
                         "$ref": "#/parameters/IDPath"
                     },
                     {
@@ -1994,6 +2024,12 @@
                         "$ref": "#/parameters/UsernamePath"
                     },
                     {
+                        "$ref": "#/parameters/PermTypePath"
+                    },
+                    {
+                        "$ref": "#/parameters/PermTypeIDPath"
+                    },
+                    {
                         "$ref": "#/parameters/IDPath"
                     }
                 ],
@@ -2021,6 +2057,18 @@
         }
     },
     "parameters": {
+        "PermTypePath": {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "type": "string"
+        },
+        "PermTypeIDPath": {
+            "name": "type_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+        },
         "UsernamePath": {
             "name": "username",
             "in": "path",
@@ -2067,6 +2115,41 @@
                         "type": "string"
                     },
                     "epoch": {
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        "Permission": {
+            "name": "feed",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "scope": {
+                        "type": "string",
+                        "default": "public",
+                        "enum": [
+                            "secret",
+                            "public",
+                            "user",
+                            "organization"
+                        ]
+                    },
+                    "scope_value": {
+                        "type": "string"
+                    },
+                    "model": {
+                        "type": "string",
+                        "default": "feed",
+                        "enum": [
+                            "feed",
+                            "group",
+                            "dashboard"
+                        ]
+                    },
+                    "object_id": {
                         "type": "number"
                     }
                 }
@@ -2224,6 +2307,52 @@
                 "updated_at": {
                     "type": "string",
                     "readOnly": true
+                }
+            }
+        },
+        "Permission": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "readOnly": true
+                },
+                "user_id": {
+                    "readOnly": true,
+                    "type": "number"
+                },
+                "scope": {
+                    "type": "string",
+                    "default": "public",
+                    "enum": [
+                        "secret",
+                        "public",
+                        "user",
+                        "organization"
+                    ]
+                },
+                "scope_value": {
+                    "type": "string"
+                },
+                "model": {
+                    "type": "string",
+                    "default": "feed",
+                    "enum": [
+                        "feed",
+                        "group",
+                        "dashboard"
+                    ]
+                },
+                "object_id": {
+                    "type": "number"
+                },
+                "created_at": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "updated_at": {
+                    "readOnly": true,
+                    "type": "string"
                 }
             }
         },

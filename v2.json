@@ -1788,7 +1788,7 @@
                 }
             }
         },
-        "/{username/{type}/{type_id}/acl": {
+        "/{username}/{type}/{type_id}/acl": {
             "get": {
                 "summary": "All permissions for current user and type",
                 "description": "The Permissions endpoint returns information about the user's permissions.\n",

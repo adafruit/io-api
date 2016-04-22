@@ -1788,48 +1788,7 @@
                 }
             }
         },
-        "/{username}/permissions": {
-            "post": {
-                "summary": "Create a new Permission",
-                "description": "",
-                "x-swagger-router-controller": "Permissions",
-                "x-swagger-router-action": "Permissions",
-                "operationId": "createPermission",
-                "consumes": [
-                    "application/json",
-                    "application/x-www-form-urlencoded"
-                ],
-                "parameters": [
-                    {
-                        "$ref": "#/parameters/UsernamePath"
-                    },
-                    {
-                        "$ref": "#/parameters/Permission"
-                    }
-                ],
-                "tags": [
-                    "Permissions"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "New Permission",
-                        "schema": {
-                            "$ref": "#/definitions/Permission"
-                        }
-                    },
-                    "403": {
-                        "description": "Unauthorized"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    },
-                    "500": {
-                        "description": "Server Error"
-                    }
-                }
-            }
-        },
-        "/{username}/permissions/{type}/{type_id}": {
+        "/{username/{type}/{type_id}/acl": {
             "get": {
                 "summary": "All permissions for current user and type",
                 "description": "The Permissions endpoint returns information about the user's permissions.\n",
@@ -1870,9 +1829,54 @@
                         "description": "Server Error"
                     }
                 }
+            },
+            "post": {
+                "summary": "Create a new Permission",
+                "description": "",
+                "x-swagger-router-controller": "Permissions",
+                "x-swagger-router-action": "Permissions",
+                "operationId": "createPermission",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/PermTypePath"
+                    },
+                    {
+                        "$ref": "#/parameters/PermTypeIDPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Permission"
+                    }
+                ],
+                "tags": [
+                    "Permissions"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Permission",
+                        "schema": {
+                            "$ref": "#/definitions/Permission"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
             }
         },
-        "/{username}/permissions/{type}/{type_id}/{id}": {
+        "/{username}/{type}/{type_id}/acl/{id}": {
             "get": {
                 "summary": "Returns Permission based on ID",
                 "description": "",

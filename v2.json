@@ -2127,6 +2127,15 @@
             "schema": {
                 "type": "object",
                 "properties": {
+                    "mode": {
+                        "type": "string",
+                        "default": "r",
+                        "enum": [
+                            "r",
+                            "w",
+                            "rw"
+                        ]
+                    },
                     "scope": {
                         "type": "string",
                         "default": "public",
@@ -2139,18 +2148,6 @@
                     },
                     "scope_value": {
                         "type": "string"
-                    },
-                    "model": {
-                        "type": "string",
-                        "default": "feed",
-                        "enum": [
-                            "feed",
-                            "group",
-                            "dashboard"
-                        ]
-                    },
-                    "object_id": {
-                        "type": "number"
                     }
                 }
             }

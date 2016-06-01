@@ -28,7 +28,7 @@
         "/feeds": {
             "get": {
                 "x-swagger-router-controller": "Feeds",
-                "operationId": "all",
+                "operationId": "getAllFeeds",
                 "summary": "All feeds for current user",
                 "description": "The Feeds endpoint returns information about the user's feeds. The response includes the latest value of each feed, and other metadata about each feed.",
                 "tags": [
@@ -59,7 +59,7 @@
                 "summary": "Create a new Feed",
                 "description": "",
                 "x-swagger-router-controller": "Feeds",
-                "operationId": "create",
+                "operationId": "createFeed",
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -96,7 +96,7 @@
                 "description": "Returns feed based on ID",
                 "summary": "Get feed by ID, Feed key, or Feed Name",
                 "x-swagger-router-controller": "Feeds",
-                "operationId": "get",
+                "operationId": "getFeedById",
                 "tags": [
                     "Feeds"
                 ],
@@ -130,7 +130,7 @@
             "put": {
                 "summary": "Replace an existing Feed",
                 "x-swagger-router-controller": "Feeds",
-                "operationId": "replace",
+                "operationId": "replaceFeed",
                 "description": "",
                 "consumes": [
                     "application/json",
@@ -174,7 +174,7 @@
                 "summary": "Update properties of an existing Feed",
                 "description": "",
                 "x-swagger-router-controller": "Feeds",
-                "operationId": "update",
+                "operationId": "updateFeed",
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -216,7 +216,7 @@
                 "summary": "Delete an existing Feed",
                 "description": "",
                 "x-swagger-router-controller": "Feeds",
-                "operationId": "destroy",
+                "operationId": "destroyFeed",
                 "parameters": [
                     {
                         "name": "id",
@@ -251,7 +251,7 @@
         "/feeds/{feed_id}/data": {
             "get": {
                 "x-swagger-router-controller": "Data",
-                "operationId": "all",
+                "operationId": "dataAll",
                 "summary": "All data for current feed",
                 "description": "",
                 "tags": [
@@ -291,7 +291,7 @@
                 "summary": "Create new Data",
                 "description": "",
                 "x-swagger-router-controller": "Data",
-                "operationId": "create",
+                "operationId": "dataCreate",
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -545,7 +545,7 @@
                 "summary": "Returns data based on ID",
                 "description": "",
                 "x-swagger-router-controller": "Data",
-                "operationId": "get",
+                "operationId": "getDataById",
                 "tags": [
                     "Data"
                 ],
@@ -586,7 +586,7 @@
             "put": {
                 "summary": "Replace existing Data",
                 "x-swagger-router-controller": "Data",
-                "operationId": "replace",
+                "operationId": "replaceData",
                 "description": "",
                 "consumes": [
                     "application/json",
@@ -636,7 +636,7 @@
                 "summary": "Update properties of existing Data",
                 "description": "",
                 "x-swagger-router-controller": "Data",
-                "operationId": "update",
+                "operationId": "updateData",
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -685,7 +685,7 @@
                 "summary": "Delete existing Data",
                 "description": "",
                 "x-swagger-router-controller": "Data",
-                "operationId": "destroy",
+                "operationId": "destroyData",
                 "parameters": [
                     {
                         "name": "feed_id",
@@ -729,7 +729,7 @@
                 "summary": "All groups for current user",
                 "description": "The Groups endpoint returns information about the user's groups.\nThe response includes the latest value of each feed in the group, and other\nmetadata about the group.\n",
                 "x-swagger-router-controller": "Groups",
-                "operationId": "all",
+                "operationId": "getAllGroups",
                 "tags": [
                     "Groups"
                 ],
@@ -758,7 +758,7 @@
                 "summary": "Create a new Group",
                 "description": "",
                 "x-swagger-router-controller": "Groups",
-                "operationId": "create",
+                "operationId": "createGroup",
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -795,7 +795,7 @@
                 "summary": "Returns Group based on ID",
                 "description": "",
                 "x-swagger-router-controller": "Groups",
-                "operationId": "get",
+                "operationId": "getGroupById",
                 "tags": [
                     "Groups"
                 ],
@@ -829,7 +829,7 @@
             "put": {
                 "summary": "Replace an existing Group",
                 "x-swagger-router-controller": "Groups",
-                "operationId": "replace",
+                "operationId": "replaceGroup",
                 "description": "",
                 "consumes": [
                     "application/json",
@@ -872,7 +872,7 @@
                 "summary": "Update properties of an existing Group",
                 "description": "",
                 "x-swagger-router-controller": "Groups",
-                "operationId": "update",
+                "operationId": "updateGroup",
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -914,7 +914,7 @@
                 "summary": "Delete an existing Group",
                 "description": "",
                 "x-swagger-router-controller": "Groups",
-                "operationId": "destroy",
+                "operationId": "destroyGroup",
                 "parameters": [
                     {
                         "name": "id",

@@ -264,6 +264,20 @@
                         "description": "ID, key, or name of feed",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "start_time",
+                        "in": "query",
+                        "description": "Start time for filtering data. Returns data created after given time.",
+                        "required": false,
+                        "type": "dateTime"
+                    },
+                    {
+                        "name": "end_time",
+                        "in": "query",
+                        "description": "End time for filtering data. Returns data created before given time.",
+                        "required": false,
+                        "type": "dateTime"
                     }
                 ],
                 "responses": {

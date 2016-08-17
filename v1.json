@@ -278,6 +278,13 @@
                         "description": "End time for filtering data. Returns data created before given time.",
                         "required": false,
                         "type": "dateTime"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit the number of records returned.",
+                        "required": false,
+                        "type": "integer"
                     }
                 ],
                 "responses": {

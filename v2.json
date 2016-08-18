@@ -1129,6 +1129,9 @@
                 "parameters": [
                     {
                         "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/DashboardIDPath"
                     }
                 ],
                 "responses": {
@@ -1206,6 +1209,9 @@
                         "$ref": "#/parameters/UsernamePath"
                     },
                     {
+                        "$ref": "#/parameters/DashboardIDPath"
+                    },
+                    {
                         "$ref": "#/parameters/IDPath"
                     }
                 ],
@@ -1240,6 +1246,9 @@
                 "parameters": [
                     {
                         "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/DashboardIDPath"
                     },
                     {
                         "$ref": "#/parameters/IDPath"
@@ -1284,6 +1293,9 @@
                         "$ref": "#/parameters/UsernamePath"
                     },
                     {
+                        "$ref": "#/parameters/DashboardIDPath"
+                    },
+                    {
                         "$ref": "#/parameters/IDPath"
                     },
                     {
@@ -1320,6 +1332,9 @@
                 "parameters": [
                     {
                         "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/DashboardIDPath"
                     },
                     {
                         "$ref": "#/parameters/IDPath"
@@ -2112,6 +2127,12 @@
         },
         "IDPath": {
             "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+        },
+        "DashboardIDPath": {
+            "name": "dashboard_id",
             "in": "path",
             "required": true,
             "type": "string"

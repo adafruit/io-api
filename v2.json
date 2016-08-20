@@ -168,7 +168,6 @@
                     "200": {
                         "description": "Updated feed",
                         "schema": {
-                            "type": "object",
                             "$ref": "#/definitions/Feed"
                         }
                     },
@@ -280,14 +279,16 @@
                         "in": "query",
                         "description": "Start time for filtering data. Returns data created after given time.",
                         "required": false,
-                        "type": "dateTime"
+                        "type": "string",
+                        "format": "date-time"
                     },
                     {
                         "name": "end_time",
                         "in": "query",
-                        "description": "End time for filtering data. Returns data created before given time.",
+                        "description": "End time for filtering data. Returns data created before give time.",
                         "required": false,
-                        "type": "dateTime"
+                        "type": "string",
+                        "format": "date-time"
                     },
                     {
                         "name": "limit",
@@ -320,9 +321,9 @@
             },
             "post": {
                 "summary": "Create new Data",
-                "description": "",
                 "x-swagger-router-controller": "Data",
-                "operationId": "create",
+                "x-swagger-router-action": "create",
+                "operationId": "createDate",
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -386,7 +387,6 @@
                     "200": {
                         "description": "Data response",
                         "schema": {
-                            "type": "object",
                             "$ref": "#/definitions/Data"
                         }
                     },
@@ -428,7 +428,6 @@
                     "200": {
                         "description": "Data response",
                         "schema": {
-                            "type": "object",
                             "$ref": "#/definitions/Data"
                         }
                     },
@@ -470,7 +469,6 @@
                     "200": {
                         "description": "Data response",
                         "schema": {
-                            "type": "object",
                             "$ref": "#/definitions/Data"
                         }
                     },
@@ -694,7 +692,7 @@
                 "summary": "Create a new Group",
                 "description": "",
                 "x-swagger-router-controller": "Groups",
-                "x-swagger-router-action": "Groups",
+                "x-swagger-router-action": "create",
                 "operationId": "createGroup",
                 "consumes": [
                     "application/json",
@@ -733,9 +731,9 @@
         "/{username}/groups/{group_key}": {
             "get": {
                 "summary": "Returns Group based on ID",
-                "description": "",
                 "x-swagger-router-controller": "Groups",
-                "operationId": "get",
+                "x-swagger-router-action": "get",
+                "operationId": "getGroup",
                 "tags": [
                     "Groups"
                 ],
@@ -925,7 +923,7 @@
                 "summary": "Create a new Dashboard",
                 "description": "",
                 "x-swagger-router-controller": "Dashboards",
-                "x-swagger-router-action": "Dashboards",
+                "x-swagger-router-action": "create",
                 "operationId": "createDashboard",
                 "consumes": [
                     "application/json",
@@ -966,7 +964,8 @@
                 "summary": "Returns Dashboard based on ID",
                 "description": "",
                 "x-swagger-router-controller": "Dashboards",
-                "operationId": "get",
+                "x-swagger-router-action": "get",
+                "operationId": "getDashboard",
                 "tags": [
                     "Dashboards"
                 ],
@@ -1159,7 +1158,7 @@
                 "summary": "Create a new Block",
                 "description": "",
                 "x-swagger-router-controller": "Blocks",
-                "x-swagger-router-action": "Blocks",
+                "x-swagger-router-action": "create",
                 "operationId": "createBlock",
                 "consumes": [
                     "application/json",
@@ -1171,6 +1170,9 @@
                     },
                     {
                         "$ref": "#/parameters/Block"
+                    },
+                    {
+                        "$ref": "#/parameters/DashboardIDPath"
                     }
                 ],
                 "tags": [
@@ -1402,7 +1404,7 @@
                 "summary": "Create a new Token",
                 "description": "",
                 "x-swagger-router-controller": "Tokens",
-                "x-swagger-router-action": "Tokens",
+                "x-swagger-router-action": "create",
                 "operationId": "createToken",
                 "consumes": [
                     "application/json",
@@ -1443,7 +1445,8 @@
                 "summary": "Returns Token based on ID",
                 "description": "",
                 "x-swagger-router-controller": "Tokens",
-                "operationId": "get",
+                "x-swagger-router-action": "get",
+                "operationId": "getToken",
                 "tags": [
                     "Tokens"
                 ],
@@ -1633,7 +1636,7 @@
                 "summary": "Create a new Trigger",
                 "description": "",
                 "x-swagger-router-controller": "Triggers",
-                "x-swagger-router-action": "Triggers",
+                "x-swagger-router-action": "create",
                 "operationId": "createTrigger",
                 "consumes": [
                     "application/json",
@@ -1674,7 +1677,8 @@
                 "summary": "Returns Trigger based on ID",
                 "description": "",
                 "x-swagger-router-controller": "Triggers",
-                "operationId": "get",
+                "x-swagger-router-action": "get",
+                "operationId": "getTrigger",
                 "tags": [
                     "Triggers"
                 ],
@@ -1870,7 +1874,7 @@
                 "summary": "Create a new Permission",
                 "description": "",
                 "x-swagger-router-controller": "Permissions",
-                "x-swagger-router-action": "Permissions",
+                "x-swagger-router-action": "create",
                 "operationId": "createPermission",
                 "consumes": [
                     "application/json",
@@ -1917,6 +1921,7 @@
                 "summary": "Returns Permission based on ID",
                 "description": "",
                 "x-swagger-router-controller": "Permissions",
+                "x-swagger-router-action": "get",
                 "operationId": "getPermission",
                 "tags": [
                     "Permissions"
@@ -2114,14 +2119,12 @@
         "FeedPath": {
             "name": "feed_key",
             "in": "path",
-            "description": "The key of the feed",
             "required": true,
             "type": "string"
         },
         "GroupPath": {
             "name": "group_key",
             "in": "path",
-            "description": "The key of the group",
             "required": true,
             "type": "string"
         },
@@ -2230,6 +2233,70 @@
                         "type": "string"
                     },
                     "key": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Dashboard": {
+            "name": "dashboard",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "key": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Block": {
+            "name": "block",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "key": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Token": {
+            "name": "token",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Trigger": {
+            "name": "trigger",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {
                         "type": "string"
                     }
                 }
@@ -2439,6 +2506,50 @@
                 "created_epoch": {
                     "readOnly": true,
                     "type": "number"
+                }
+            }
+        },
+        "Dashboard": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                }
+            }
+        },
+        "Block": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                }
+            }
+        },
+        "Token": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "Trigger": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
                 }
             }
         }

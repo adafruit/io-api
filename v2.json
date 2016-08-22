@@ -1202,7 +1202,8 @@
                 "summary": "Returns Block based on ID",
                 "description": "",
                 "x-swagger-router-controller": "Blocks",
-                "operationId": "get",
+                "x-swagger-router-action": "get",
+                "operationId": "getBlock",
                 "tags": [
                     "Blocks"
                 ],

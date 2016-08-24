@@ -28,6 +28,35 @@
         }
     ],
     "paths": {
+        "/user": {
+            "get": {
+                "x-swagger-router-controller": "Users",
+                "x-swagger-router-action": "get",
+                "operationId": "currentUser",
+                "summary": "Get information about the current user",
+                "tags": [
+                  "Users"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "An array of feeds",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
         "/{username}/feeds": {
             "get": {
                 "x-swagger-router-controller": "Feeds",
@@ -2324,6 +2353,41 @@
         }
     },
     "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "readOnly": true
+                },
+                "name": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "color": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "username": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "time_zone": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "created_at": {
+                    "type": "string",
+                    "format": "dateTime",
+                    "readOnly": true
+                },
+                "updated_at": {
+                    "type": "string",
+                    "format": "dateTime",
+                    "readOnly": true
+                }
+            }
+        },
         "Group": {
             "type": "object",
             "properties": {

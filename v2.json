@@ -40,7 +40,7 @@
                 "parameters": [],
                 "responses": {
                     "200": {
-                        "description": "An array of feeds",
+                        "description": "A User record",
                         "schema": {
                             "$ref": "#/definitions/User"
                         }

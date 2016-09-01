@@ -1443,6 +1443,9 @@
                 "parameters": [
                     {
                         "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/Token"
                     }
                 ],
                 "tags": [

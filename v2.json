@@ -45,8 +45,11 @@
                             "$ref": "#/definitions/User"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -82,8 +85,11 @@
                             }
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -121,8 +127,11 @@
                             "$ref": "#/definitions/Feed"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -150,8 +159,11 @@
                             "$ref": "#/definitions/Feed"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -200,8 +212,11 @@
                             "$ref": "#/definitions/Feed"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -242,8 +257,11 @@
                             "$ref": "#/definitions/Feed"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -274,8 +292,11 @@
                     "200": {
                         "description": "Deleted feed successfully"
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -337,8 +358,11 @@
                             }
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -378,8 +402,11 @@
                             "$ref": "#/definitions/Data"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -419,8 +446,11 @@
                             "$ref": "#/definitions/Data"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -460,8 +490,11 @@
                             "$ref": "#/definitions/Data"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -501,8 +534,11 @@
                             "$ref": "#/definitions/Data"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -541,8 +577,11 @@
                             "$ref": "#/definitions/Data"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -586,8 +625,11 @@
                             "$ref": "#/definitions/Data"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -631,8 +673,11 @@
                             "$ref": "#/definitions/Data"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -669,8 +714,11 @@
                             "type": "string"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -706,8 +754,11 @@
                             }
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -745,8 +796,11 @@
                             "$ref": "#/definitions/Group"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -781,8 +835,11 @@
                             "$ref": "#/definitions/Group"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -823,8 +880,11 @@
                             "$ref": "#/definitions/Group"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -865,8 +925,11 @@
                             "$ref": "#/definitions/Group"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -900,8 +963,11 @@
                             "type": "string"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -937,8 +1003,11 @@
                             }
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -976,8 +1045,11 @@
                             "$ref": "#/definitions/Dashboard"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1013,8 +1085,11 @@
                             "$ref": "#/definitions/Dashboard"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1055,8 +1130,11 @@
                             "$ref": "#/definitions/Dashboard"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1097,8 +1175,11 @@
                             "$ref": "#/definitions/Dashboard"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1132,8 +1213,11 @@
                             "type": "string"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1172,8 +1256,11 @@
                             }
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1214,8 +1301,11 @@
                             "$ref": "#/definitions/Block"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1254,8 +1344,11 @@
                             "$ref": "#/definitions/Block"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1299,8 +1392,11 @@
                             "$ref": "#/definitions/Block"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1344,8 +1440,11 @@
                             "$ref": "#/definitions/Block"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1382,8 +1481,11 @@
                             "type": "string"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1419,8 +1521,11 @@
                             }
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1458,8 +1563,11 @@
                             "$ref": "#/definitions/Token"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1495,8 +1603,11 @@
                             "$ref": "#/definitions/Token"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1537,8 +1648,11 @@
                             "$ref": "#/definitions/Token"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1579,8 +1693,11 @@
                             "$ref": "#/definitions/Token"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1614,8 +1731,11 @@
                             "type": "string"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1651,8 +1771,11 @@
                             }
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1690,8 +1813,11 @@
                             "$ref": "#/definitions/Trigger"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1727,8 +1853,11 @@
                             "$ref": "#/definitions/Trigger"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1769,8 +1898,11 @@
                             "$ref": "#/definitions/Trigger"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1811,8 +1943,11 @@
                             "$ref": "#/definitions/Trigger"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1846,8 +1981,11 @@
                             "type": "string"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1889,8 +2027,11 @@
                             }
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1934,8 +2075,11 @@
                             "$ref": "#/definitions/Permission"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1977,8 +2121,11 @@
                             "$ref": "#/definitions/Permission"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -2025,8 +2172,11 @@
                             "$ref": "#/definitions/Permission"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -2073,8 +2223,11 @@
                             "$ref": "#/definitions/Permission"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -2114,8 +2267,11 @@
                             "type": "string"
                         }
                     },
-                    "403": {
+                    "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"

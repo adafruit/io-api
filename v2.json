@@ -2458,6 +2458,36 @@
                     },
                     "key": {
                         "type": "string"
+                    },
+                    "dashboard_id": {
+                        "type": "number"
+                    },
+                    "group_id": {
+                        "type": "number"
+                    },
+                    "visual_type": {
+                        "type": "string"
+                    },
+                    "column": {
+                        "type": "number"
+                    },
+                    "row": {
+                        "type": "number"
+                    },
+                    "size_x": {
+                        "type": "number"
+                    },
+                    "size_y": {
+                        "type": "number"
+                    },
+                    "feed_ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "number"
+                        }
+                    },
+                    "properties": {
+                        "type": "object"
                     }
                 }
             }
@@ -2755,7 +2785,14 @@
                 },
                 "key": {
                     "type": "string"
-                }
+                },
+                "feeds": {
+                    "type": "array",
+                    "readOnly": true,
+                    "items": {
+                        "$ref": "#/definitions/Feed"
+                    }
+                },
             }
         },
         "Token": {

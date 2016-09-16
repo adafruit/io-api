@@ -2792,7 +2792,7 @@
                     "items": {
                         "$ref": "#/definitions/Feed"
                     }
-                },
+                }
             }
         },
         "Token": {

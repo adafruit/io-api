@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/adafruit/io-api/issues"
   },
-  "homepage": "https://github.com/adafruit/io-api#readme"
+  "homepage": "https://github.com/adafruit/io-api#readme",
+  "devDependencies": {
+    "jsonlint": "^1.6.2"
+  }
 }

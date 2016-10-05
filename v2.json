@@ -2779,7 +2779,13 @@
                 },
                 "key": {
                     "type": "string"
-                }
+                },
+                "blocks": {
+                    "type": "array",
+                    "readOnly": true,
+                    "items": {
+                        "$ref": "#/definitions/Block"
+                    }
             }
         },
         "Block": {

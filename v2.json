@@ -2480,10 +2480,18 @@
                     "size_y": {
                         "type": "number"
                     },
-                    "feed_ids": {
+                    "block_feeds": {
                         "type": "array",
                         "items": {
-                            "type": "number"
+                            "type": "object",
+                            "properties": {
+                                "feed_id": {
+                                    "type": "string"
+                                },
+                                "group_id": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     },
                     "properties": {
@@ -2786,12 +2794,41 @@
                 "key": {
                     "type": "string"
                 },
-                "feeds": {
+                "visual_type": {
+                    "type": "string"
+                },
+                "column": {
+                    "type": "number"
+                },
+                "row": {
+                    "type": "number"
+                },
+                "size_x": {
+                    "type": "number"
+                },
+                "size_y": {
+                    "type": "number"
+                },
+                "block_feeds": {
                     "type": "array",
                     "readOnly": true,
                     "items": {
-                        "$ref": "#/definitions/Feed"
+                        "$ref": "#/definitions/BlockFeed"
                     }
+                }
+            }
+        },
+        "BlockFeed": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "feed": {
+                    "$ref": "#/definitions/Feed"
+                },
+                "group": {
+                    "$ref": "#/definitions/Group"
                 }
             }
         },

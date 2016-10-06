@@ -376,7 +376,7 @@
                 "summary": "Create new Data",
                 "x-swagger-router-controller": "Data",
                 "x-swagger-router-action": "create",
-                "operationId": "createDate",
+                "operationId": "createData",
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -961,6 +961,122 @@
                         "description": "Deleted Group successfully",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/groups/{group_key}/feeds/{feed_key}/data": {
+            "get": {
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "all",
+                "operationId": "allGroupFeedData",
+                "summary": "All data for current feed in group",
+                "description": "",
+                "tags": [
+                    "Data"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/GroupPath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "name": "start_time",
+                        "in": "query",
+                        "description": "Start time for filtering data. Returns data created after given time.",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "end_time",
+                        "in": "query",
+                        "description": "End time for filtering data. Returns data created before give time.",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit the number of records returned.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of data",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Data"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create new Data",
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "create",
+                "operationId": "createGroupFeedData",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/GroupPath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/Data"
+                    }
+                ],
+                "tags": [
+                    "Data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New data",
+                        "schema": {
+                            "$ref": "#/definitions/Data"
                         }
                     },
                     "401": {

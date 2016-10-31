@@ -984,7 +984,7 @@
         "/{username}/groups/{group_key}/feeds": {
             "get": {
                 "x-swagger-router-controller": "GroupFeeds",
-                "x-swagger-router-action": "all",
+                "x-swagger-router-action": "group_all",
                 "operationId": "allGroupFeeds",
                 "summary": "All feeds for current user in a given group",
                 "description": "The Group Feeds endpoint returns information about the user's feeds. The response includes the latest value of each feed, and other metadata about each feed, but only for feeds within the given group.",
@@ -1028,7 +1028,7 @@
                 "summary": "Create a new Feed in a Group",
                 "description": "",
                 "x-swagger-router-controller": "GroupFeeds",
-                "x-swagger-router-action": "create",
+                "x-swagger-router-action": "group_create",
                 "operationId": "createGroupFeed",
                 "consumes": [
                     "application/json",

@@ -4,7 +4,8 @@
   "description": "io api docs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "jsonlint --quiet v2.json && jsonlint --quiet v1.json"
   },
   "repository": {
     "type": "git",

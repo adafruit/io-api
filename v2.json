@@ -1073,7 +1073,7 @@
         "/{username}/groups/{group_key}/feeds/{feed_key}/data": {
             "get": {
                 "x-swagger-router-controller": "Data",
-                "x-swagger-router-action": "groupFeedAll",
+                "x-swagger-router-action": "group_all",
                 "operationId": "allGroupFeedData",
                 "summary": "All data for current feed in group",
                 "description": "",
@@ -1141,7 +1141,7 @@
             "post": {
                 "summary": "Create new Data",
                 "x-swagger-router-controller": "Data",
-                "x-swagger-router-action": "groupFeedcreate",
+                "x-swagger-router-action": "group_create",
                 "operationId": "createGroupFeedData",
                 "consumes": [
                     "application/json",

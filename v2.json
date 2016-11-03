@@ -310,6 +310,46 @@
                 }
             }
         },
+        "/{username}/feeds/{feed_key}/details": {
+            "get": {
+                "description": "Returns more detailed feed record based on the feed key",
+                "summary": "Get detailed feed by feed key",
+                "x-swagger-router-controller": "Feeds",
+                "x-swagger-router-action": "details",
+                "operationId": "getFeedDetails",
+                "tags": [
+                    "Feeds"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Feed response",
+                        "schema": {
+                            "$ref": "#/definitions/Feed"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    }
+                ]
+            }
+        },
         "/{username}/feeds/{feed_key}/data": {
             "get": {
                 "x-swagger-router-controller": "Data",
@@ -2848,6 +2888,10 @@
                 },
                 "description": {
                     "type": "string"
+                },
+                "details": {
+                    "type": "object",
+                    "readOnly": true
                 },
                 "unit_type": {
                     "type": "string"

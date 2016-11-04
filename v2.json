@@ -1021,6 +1021,92 @@
                 }
             }
         },
+        "/{username}/groups/{group_key}/add": {
+            "post": {
+                "summary": "Add an existing Feed to a Group",
+                "description": "",
+                "x-swagger-router-controller": "Groups",
+                "x-swagger-router-action": "add_feed",
+                "tags": [
+                    "Groups",
+                    "Feeds"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/GroupPath"
+                    },
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated group",
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/groups/{group_key}/remove": {
+            "post": {
+                "summary": "Remove a Feed from a Group",
+                "description": "",
+                "x-swagger-router-controller": "Groups",
+                "x-swagger-router-action": "remove_feed",
+                "tags": [
+                    "Groups",
+                    "Feeds"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/GroupPath"
+                    },
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated group",
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
         "/{username}/groups/{group_key}/feeds": {
             "get": {
                 "x-swagger-router-controller": "GroupFeeds",
@@ -2557,6 +2643,12 @@
             "required": true,
             "type": "string"
         },
+        "FeedParam": {
+            "name": "feed_key",
+            "in": "query",
+            "required": false,
+            "type": "string"
+        },
         "GroupPath": {
             "name": "group_key",
             "in": "path",
@@ -2564,11 +2656,10 @@
             "type": "string"
         },
         "GroupParam": {
-            "name": "group_id",
+            "name": "group_key",
             "in": "query",
             "required": false,
-            "type": "string",
-            "description": "A group key passed as a query parameter"
+            "type": "string"
         },
         "IDPath": {
             "name": "id",
@@ -2879,6 +2970,13 @@
                 "key": {
                     "type": "string"
                 },
+                "group": {
+                    "type": "object",
+                    "readOnly": true,
+                    "additionalProperties": {
+                      "$ref": "#/definitions/Group"
+                    }
+                },
                 "groups": {
                     "type": "array",
                     "readOnly": true,
@@ -2891,7 +2989,51 @@
                 },
                 "details": {
                     "type": "object",
-                    "readOnly": true
+                    "description": "Additional details about this feed.",
+                    "readOnly": true,
+                    "properties": {
+                        "shared_with": {
+                            "type": "array",
+                            "description": "Access control list for this feed",
+                            "items": {
+                                "type": "object"
+                            }
+                        },
+                        "status": {
+                            "type": "object",
+                            "properties": {
+                                "notify": {
+                                    "type": "boolean",
+                                    "description": "Is status notification active?"
+                                },
+                                "timeout": {
+                                    "type": "integer",
+                                    "description": "Status notification timeout in minutes."
+                                }
+                            }
+                        },
+                        "data": {
+                            "type": "object",
+                            "properties": {
+                                "first": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "$ref": "#/definitions/Data"
+                                    }
+                                },
+                                "last": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "$ref": "#/definitions/Data"
+                                    }
+                                },
+                                "count": {
+                                    "type": "integer",
+                                    "description": "Number of data points stored by this feed."
+                                }
+                            }
+                        }
+                    }
                 },
                 "unit_type": {
                     "type": "string"

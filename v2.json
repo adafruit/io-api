@@ -384,6 +384,14 @@
                         "format": "date-time"
                     },
                     {
+                        "name": "resolution",
+                        "in": "query",
+                        "description": "A resolution size in seconds. By giving a resolution value you will get back grouped data points averaged over resolution-sized intervals.",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
                         "name": "limit",
                         "in": "query",
                         "description": "Limit the number of records returned.",
@@ -2639,6 +2647,7 @@
         },
         "FeedPath": {
             "name": "feed_key",
+            "description": "a valid feed key",
             "in": "path",
             "required": true,
             "type": "string"

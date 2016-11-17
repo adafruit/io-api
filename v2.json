@@ -683,7 +683,7 @@
                 }
             }
         },
-        "/{username}/feeds/{feed_key}/data/{id}'": {
+        "/{username}/feeds/{feed_key}/data/{id}": {
             "get": {
                 "summary": "Returns data based on feed key",
                 "description": "",

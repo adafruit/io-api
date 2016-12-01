@@ -3159,19 +3159,6 @@
                                 "type": "object"
                             }
                         },
-                        "status": {
-                            "type": "object",
-                            "properties": {
-                                "notify": {
-                                    "type": "boolean",
-                                    "description": "Is status notification active?"
-                                },
-                                "timeout": {
-                                    "type": "integer",
-                                    "description": "Status notification timeout in minutes."
-                                }
-                            }
-                        },
                         "data": {
                             "type": "object",
                             "properties": {
@@ -3226,6 +3213,14 @@
                 "status": {
                     "type": "string",
                     "readOnly": true
+                },
+                "status_notify": {
+                    "type": "boolean",
+                    "description": "Is status notification active?"
+                },
+                "status_timeout": {
+                    "type": "integer",
+                    "description": "Status notification timeout in minutes."
                 },
                 "created_at": {
                     "type": "string",

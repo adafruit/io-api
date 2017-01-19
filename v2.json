@@ -107,6 +107,38 @@
                         "description": "Server Error"
                     }
                 }
+            },
+            "delete": {
+                "x-swagger-router-controller": "Activities",
+                "x-swagger-router-action": "destroy",
+                "operationId": "destroyActivities",
+                "summary": "All activities for current user",
+                "description": "Delete all your activities.",
+                "tags": [
+                    "Activities"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted activities successfully"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
             }
         },
         "/{username}/activities/{type}": {

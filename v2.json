@@ -587,6 +587,55 @@
                 }
             }
         },
+        "/{username}/feeds/{feed_key}/data/batch": {
+            "post": {
+                "summary": "Create multiple new Data records",
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "batch",
+                "operationId": "batchCreateData",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/DataCollection"
+                    }
+                ],
+                "tags": [
+                    "Data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New data",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Data"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
         "/{username}/feeds/{feed_key}/data/previous": {
             "get": {
                 "summary": "Previous Data in Queue",
@@ -1422,6 +1471,58 @@
                         "description": "New data",
                         "schema": {
                             "$ref": "#/definitions/Data"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/groups/{group_key}/feeds/{feed_key}/data/batch": {
+            "post": {
+                "summary": "Create multiple new Data records in a group",
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "group_batch",
+                "operationId": "batchCreateGroupFeedData",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/GroupPath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/DataCollection"
+                    }
+                ],
+                "tags": [
+                    "Data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New data",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Data"
+                            }
                         }
                     },
                     "401": {
@@ -2831,7 +2932,7 @@
             "type": "string"
         },
         "Data": {
-            "name": "data",
+            "name": "datum",
             "in": "body",
             "required": true,
             "schema": {
@@ -2839,6 +2940,10 @@
                 "properties": {
                     "value": {
                         "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "dateTime"
                     },
                     "lat": {
                         "type": "string"
@@ -2851,6 +2956,38 @@
                     },
                     "epoch": {
                         "type": "number"
+                    }
+                }
+            }
+        },
+        "DataCollection": {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "value": {
+                            "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "dateTime"
+                        },
+                        "lat": {
+                            "type": "string"
+                        },
+                        "lon": {
+                            "type": "string"
+                        },
+                        "ele": {
+                            "type": "string"
+                        },
+                        "epoch": {
+                            "type": "number"
+                        }
                     }
                 }
             }

@@ -2935,6 +2935,7 @@
             "name": "datum",
             "in": "body",
             "required": true,
+            "description": "Data record including a value field (required) and optionally including: lat, lon, ele (latitude, longitude, and elevation values), and created_at (a date/time string).",
             "schema": {
                 "type": "object",
                 "properties": {
@@ -2964,6 +2965,7 @@
             "name": "data",
             "in": "body",
             "required": true,
+            "description": "A collection of data records including value (required) and optionally including: lat, lon, ele (latitude, longitude, and elevation values), and created_at (a date/time string).",
             "schema": {
                 "type": "array",
                 "items": {

@@ -3065,6 +3065,10 @@
                         "type": "string"
                     }
                 }
+            },
+            "x-examples" : {
+              "application/json" : "{\"name\":\"Some Group\",\"description\":\"A collection of feeds\"}",
+              "default" : "{\"name\":\"Some Group\",\"description\":\"A collection of feeds\"}"
             }
         },
         "Dashboard": {

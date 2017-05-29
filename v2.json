@@ -12,9 +12,7 @@
     ],
     "basePath": "/api/v2",
     "produces": [
-        "application/json",
-        "application/xml",
-        "text/csv"
+        "application/json"
     ],
     "security": [
         {

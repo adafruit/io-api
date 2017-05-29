@@ -583,7 +583,7 @@
                 "x-swagger-router-action": "chart",
                 "operationId": "chartData",
                 "summary": "Chart data for current feed",
-                "description": "The Chart API is what we use on io.adafruit.com to populate charts over varying timespans with a consistent number of data points, the maximum limit is 480 points. All time-based parameters are optional, if none are given it will default to 1 hour at the finest-grained resolution possible.",
+                "description": "The Chart API is what we use on io.adafruit.com to populate charts over varying timespans with a consistent number of data points. The maximum number of points returned is 480. This API works by aggregating slices of time into a single value by averaging.\n\nAll time-based parameters are optional, if none are given it will default to 1 hour at the finest-grained resolution possible.",
                 "tags": [
                     "Data"
                 ],
@@ -642,11 +642,17 @@
                               },
                               "columns": {
                                 "type": "array",
-                                "description": "The names of the columns returned as data."
+                                "description": "The names of the columns returned as data.",
+                                "items": {
+                                  "type": "string"
+                                }
                               },
                               "data": {
                                 "type": "array",
-                                "description": "The actual chart data."
+                                "description": "The actual chart data.",
+                                "items": {
+                                  "type": "array"
+                                }
                               }
                             }
                         }

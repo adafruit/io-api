@@ -508,14 +508,6 @@
                     },
                     {
                         "$ref": "#/parameters/Limit"
-                    },
-                    {
-                        "name": "resolution",
-                        "in": "query",
-                        "description": "A resolution size in seconds. By giving a resolution value you will get back grouped data points averaged over resolution-sized intervals.",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32"
                     }
                 ],
                 "responses": {
@@ -570,6 +562,95 @@
                         "description": "New data",
                         "schema": {
                             "$ref": "#/definitions/Data"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/feeds/{feed_key}/data/chart": {
+            "get": {
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "chart",
+                "operationId": "chartData",
+                "summary": "Chart data for current feed",
+                "description": "The Chart API is what we use on io.adafruit.com to populate charts over varying timespans with a consistent number of data points, the maximum limit is 480 points. All time-based parameters are optional, if none are given it will default to 1 hour at the finest-grained resolution possible.",
+                "tags": [
+                    "Data"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/StartTime"
+                    },
+                    {
+                        "$ref": "#/parameters/EndTime"
+                    },
+                    {
+                        "name": "resolution",
+                        "in": "query",
+                        "description": "A resolution size in minutes. By giving a resolution value you will get back grouped data points aggregated over resolution-sized intervals. NOTE: time span is preferred over resolution, so if you request a span of time that includes more than max limit points you may get a larger resolution than you requested. Valid resolutions are 1, 5, 10, 30, 60, and 120.",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "hours",
+                        "in": "query",
+                        "description": "The number of hours the chart should cover.",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A JSON record containing chart data and the parameters used to generate it.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                              "feed": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "key": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "parameters": {
+                                "type": "object"
+                              },
+                              "columns": {
+                                "type": "array",
+                                "description": "The names of the columns returned as data."
+                              },
+                              "data": {
+                                "type": "array",
+                                "description": "The actual chart data."
+                              }
+                            }
                         }
                     },
                     "401": {

@@ -90,6 +90,9 @@
                             "items": {
                                 "$ref": "#/definitions/Activity"
                             }
+                        },
+                        "headers": {
+                            "$ref": "#/definitions/Pagination"
                         }
                     },
                     "401": {
@@ -516,6 +519,9 @@
                             "items": {
                                 "$ref": "#/definitions/Data"
                             }
+                        },
+                        "headers": {
+                            "$ref": "#/definitions/Pagination"
                         }
                     },
                     "401": {
@@ -638,7 +644,9 @@
                                 }
                               },
                               "parameters": {
-                                "type": "object"
+                                "type": "object",
+                                "properties": {
+                                }
                               },
                               "columns": {
                                 "type": "array",
@@ -3670,6 +3678,24 @@
                 "name": {
                     "type": "string"
                 }
+            }
+        },
+        "Pagination": {
+            "X-Pagination-Limit": {
+               "type": "integer",
+               "description": "The limit this request is using, either your given value or the default (1000)."
+            },
+            "X-Pagination-Count": {
+               "type": "integer",
+               "description": "The number of records returned."
+            },
+            "X-Pagination-Start": {
+               "type": "date-time",
+               "description": "The created_at value for the oldest record returned."
+            },
+            "X-Pagination-End": {
+               "type": "date-time",
+               "description": "The created_at value for the newest record returned."
             }
         }
     }

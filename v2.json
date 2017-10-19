@@ -58,6 +58,50 @@
                 }
             }
         },
+        "/{username}/throttle": {
+            "get": {
+                "x-swagger-router-controller": "Users",
+                "x-swagger-router-action": "throttle",
+                "operationId": "getCurrentUserThrottle",
+                "summary": "Get the user's data rate limit and current activity level.",
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                  { "$ref": "#/parameters/UsernamePath" }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data rate limit and current actions.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data_rate_limit": {
+                                   "type": "integer",
+                                   "description": "Max possible actions inside the time window (usually 1 minute)."
+                                },
+                                "active_data_rate": {
+                                   "type": "integer",
+                                   "description": "Actions taken inside the time window."
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
         "/{username}/activities": {
             "get": {
                 "x-swagger-router-controller": "Activities",

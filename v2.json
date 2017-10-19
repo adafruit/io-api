@@ -101,11 +101,11 @@
                                "description": "The number of records returned."
                             },
                             "X-Pagination-Start": {
-                               "type": "date-time",
+                               "type": "string",
                                "description": "The created_at value for the oldest record returned."
                             },
                             "X-Pagination-End": {
-                               "type": "date-time",
+                               "type": "string",
                                "description": "The created_at value for the newest record returned."
                             }
                         }
@@ -504,7 +504,7 @@
                 "x-swagger-router-controller": "Data",
                 "x-swagger-router-action": "all",
                 "operationId": "allData",
-                "summary": "All data for current feed",
+                "summary": "Get all data for the given feed",
                 "description": "",
                 "tags": [
                     "Data"
@@ -532,7 +532,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Data"
+                                "$ref": "#/definitions/DataResponse"
                             }
                         },
                         "headers": {
@@ -545,11 +545,11 @@
                                "description": "The number of records returned."
                             },
                             "X-Pagination-Start": {
-                               "type": "date-time",
+                               "type": "string",
                                "description": "The created_at value for the oldest record returned."
                             },
                             "X-Pagination-End": {
-                               "type": "date-time",
+                               "type": "string",
                                "description": "The created_at value for the newest record returned."
                             }
                         }
@@ -640,7 +640,6 @@
                         "name": "resolution",
                         "in": "query",
                         "description": "A resolution size in minutes. By giving a resolution value you will get back grouped data points aggregated over resolution-sized intervals. NOTE: time span is preferred over resolution, so if you request a span of time that includes more than max limit points you may get a larger resolution than you requested. Valid resolutions are 1, 5, 10, 30, 60, and 120.",
-                        "required": false,
                         "type": "integer",
                         "format": "int32"
                     },
@@ -648,7 +647,6 @@
                         "name": "hours",
                         "in": "query",
                         "description": "The number of hours the chart should cover.",
-                        "required": false,
                         "type": "integer",
                         "format": "int32"
                     }
@@ -659,39 +657,42 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                              "feed": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "integer"
-                                  },
-                                  "key": {
-                                    "type": "string"
-                                  },
-                                  "name": {
-                                    "type": "string"
-                                  }
+                                "feed": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "key": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "parameters": {
+                                    "type": "object",
+                                    "properties": {
+                                    }
+                                },
+                                "columns": {
+                                    "type": "array",
+                                    "description": "The names of the columns returned as data.",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "description": "The actual chart data.",
+                                    "items": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
                                 }
-                              },
-                              "parameters": {
-                                "type": "object",
-                                "properties": {
-                                }
-                              },
-                              "columns": {
-                                "type": "array",
-                                "description": "The names of the columns returned as data.",
-                                "items": {
-                                  "type": "string"
-                                }
-                              },
-                              "data": {
-                                "type": "array",
-                                "description": "The actual chart data.",
-                                "items": {
-                                  "type": "array"
-                                }
-                              }
                             }
                         }
                     },
@@ -740,7 +741,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Data"
+                                "$ref": "#/definitions/DataResponse"
                             }
                         }
                     },
@@ -785,7 +786,7 @@
                     "200": {
                         "description": "Data response",
                         "schema": {
-                            "$ref": "#/definitions/Data"
+                            "$ref": "#/definitions/DataResponse"
                         }
                     },
                     "401": {
@@ -829,7 +830,7 @@
                     "200": {
                         "description": "Data response",
                         "schema": {
-                            "$ref": "#/definitions/Data"
+                            "$ref": "#/definitions/DataResponse"
                         }
                     },
                     "401": {
@@ -873,7 +874,7 @@
                     "200": {
                         "description": "Data response",
                         "schema": {
-                            "$ref": "#/definitions/Data"
+                            "$ref": "#/definitions/DataResponse"
                         }
                     },
                     "401": {
@@ -916,7 +917,7 @@
                     "200": {
                         "description": "Data response",
                         "schema": {
-                            "$ref": "#/definitions/Data"
+                            "$ref": "#/definitions/DataResponse"
                         }
                     },
                     "401": {
@@ -964,7 +965,7 @@
                     "200": {
                         "description": "Updated Data",
                         "schema": {
-                            "$ref": "#/definitions/Data"
+                            "$ref": "#/definitions/DataResponse"
                         }
                     },
                     "401": {
@@ -1012,7 +1013,7 @@
                     "200": {
                         "description": "Updated Data",
                         "schema": {
-                            "$ref": "#/definitions/Data"
+                            "$ref": "#/definitions/DataResponse"
                         }
                     },
                     "401": {
@@ -1497,12 +1498,61 @@
                 }
             }
         },
+        "/{username}/groups/{group_key}/data": {
+            "post": {
+                "summary": "Create new data for multiple feeds in a group",
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "group_create",
+                "operationId": "createGroupData",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/GroupPath"
+                    },
+                    {
+                        "$ref": "#/parameters/GroupFeedData"
+                    }
+                ],
+                "tags": [
+                    "Data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New data",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/DataResponse"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
         "/{username}/groups/{group_key}/feeds/{feed_key}/data": {
             "get": {
                 "x-swagger-router-controller": "Data",
                 "x-swagger-router-action": "group_all",
                 "operationId": "allGroupFeedData",
-                "summary": "All data for current feed in group",
+                "summary": "All data for current feed in a specific group",
                 "description": "",
                 "tags": [
                     "Data"
@@ -1521,7 +1571,6 @@
                         "name": "start_time",
                         "in": "query",
                         "description": "Start time for filtering data. Returns data created after given time.",
-                        "required": false,
                         "type": "string",
                         "format": "date-time"
                     },
@@ -1529,7 +1578,6 @@
                         "name": "end_time",
                         "in": "query",
                         "description": "End time for filtering data. Returns data created before give time.",
-                        "required": false,
                         "type": "string",
                         "format": "date-time"
                     },
@@ -1537,7 +1585,6 @@
                         "name": "limit",
                         "in": "query",
                         "description": "Limit the number of records returned.",
-                        "required": false,
                         "type": "integer"
                     }
                 ],
@@ -1547,7 +1594,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Data"
+                                "$ref": "#/definitions/DataResponse"
                             }
                         }
                     },
@@ -1566,9 +1613,9 @@
                 }
             },
             "post": {
-                "summary": "Create new Data",
+                "summary": "Create new Data in a feed belonging to a particular group",
                 "x-swagger-router-controller": "Data",
-                "x-swagger-router-action": "group_create",
+                "x-swagger-router-action": "group_feed_create",
                 "operationId": "createGroupFeedData",
                 "consumes": [
                     "application/json",
@@ -1595,7 +1642,7 @@
                     "200": {
                         "description": "New data",
                         "schema": {
-                            "$ref": "#/definitions/Data"
+                            "$ref": "#/definitions/DataResponse"
                         }
                     },
                     "401": {
@@ -1615,9 +1662,9 @@
         },
         "/{username}/groups/{group_key}/feeds/{feed_key}/data/batch": {
             "post": {
-                "summary": "Create multiple new Data records in a group",
+                "summary": "Create multiple new Data records in a feed belonging to a particular group",
                 "x-swagger-router-controller": "Data",
-                "x-swagger-router-action": "group_batch",
+                "x-swagger-router-action": "group_feed_batch",
                 "operationId": "batchCreateGroupFeedData",
                 "consumes": [
                     "application/json",
@@ -1646,7 +1693,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Data"
+                                "$ref": "#/definitions/DataResponse"
                             }
                         }
                     },
@@ -2987,7 +3034,6 @@
             "name": "start_time",
             "in": "query",
             "description": "Start time for filtering, returns records created after given time.",
-            "required": false,
             "type": "string",
             "format": "date-time"
         },
@@ -2995,7 +3041,6 @@
             "name": "end_time",
             "in": "query",
             "description": "End time for filtering, returns records created before give time.",
-            "required": false,
             "type": "string",
             "format": "date-time"
         },
@@ -3003,7 +3048,6 @@
             "name": "limit",
             "in": "query",
             "description": "Limit the number of records returned.",
-            "required": false,
             "type": "integer"
         },
         "UsernamePath": {
@@ -3029,7 +3073,6 @@
         "FeedParam": {
             "name": "feed_key",
             "in": "query",
-            "required": false,
             "type": "string"
         },
         "GroupPath": {
@@ -3041,7 +3084,6 @@
         "GroupParam": {
             "name": "group_key",
             "in": "query",
-            "required": false,
             "type": "string"
         },
         "IDPath": {
@@ -3291,6 +3333,53 @@
                 "properties": {
                     "name": {
                         "type": "string"
+                    }
+                }
+            }
+        },
+        "GroupFeedData": {
+            "name": "group_feed_data",
+            "in": "body",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "required": ["feeds"],
+                "properties": {
+                    "location": {
+                        "type": "object",
+                        "description": "A location record with `lat`, `lon`, and [optional] `ele` properties.",
+                        "required": ["lat", "lon"],
+                        "properties": {
+                            "lat": {
+                                "type": "number"
+                            },
+                            "lon": {
+                                "type": "number"
+                            },
+                            "ele": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "feeds": {
+                        "description": "An array of feed data records with `key` and `value` properties.",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": ["key", "value"],
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "description": "Optional created_at timestamp which will be applied to all feed values created."
                     }
                 }
             }
@@ -3621,6 +3710,47 @@
                 },
                 "created_epoch": {
                     "readOnly": true,
+                    "type": "number"
+                }
+            }
+        },
+        "DataResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "value": {
+                    "type": "string"
+                },
+                "feed_id": {
+                    "type": "number"
+                },
+                "group_id": {
+                    "type": "number"
+                },
+                "expiration": {
+                    "type": "string"
+                },
+                "lat": {
+                    "type": "number"
+                },
+                "lon": {
+                    "type": "number"
+                },
+                "ele": {
+                    "type": "number"
+                },
+                "completed_at": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "created_epoch": {
                     "type": "number"
                 }
             }

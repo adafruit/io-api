@@ -1161,7 +1161,7 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "type": "number",
+                    "type": "string",
                     "readOnly": true
                 },
                 "value": {

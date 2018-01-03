@@ -807,7 +807,7 @@
         "/{username}/feeds/{feed_key}/data/previous": {
             "get": {
                 "summary": "Previous Data in Queue",
-                "description": "",
+                "description": "Get the previously processed data point in the feed. NOTE: this method doesn't move the processing queue pointer.",
                 "x-swagger-router-controller": "Data",
                 "x-swagger-router-action": "previous",
                 "operationId": "previousData",
@@ -851,7 +851,7 @@
         "/{username}/feeds/{feed_key}/data/next": {
             "get": {
                 "summary": "Next Data in Queue",
-                "description": "",
+                "description": "Get the next newest data point in the feed. If queue processing hasn't been started, the first data point in the feed will be returned.",
                 "x-swagger-router-controller": "Data",
                 "x-swagger-router-action": "next",
                 "operationId": "nextData",
@@ -895,10 +895,54 @@
         "/{username}/feeds/{feed_key}/data/last": {
             "get": {
                 "summary": "Last Data in Queue",
-                "description": "",
+                "description": "Get the most recent data point in the feed. This request sets the queue pointer to the end of the feed.",
                 "x-swagger-router-controller": "Data",
                 "x-swagger-router-action": "last",
                 "operationId": "lastData",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    }
+                ],
+                "tags": [
+                    "Data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data response",
+                        "schema": {
+                            "$ref": "#/definitions/DataResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
+        "/{username}/feeds/{feed_key}/data/first": {
+            "get": {
+                "summary": "First Data in Queue",
+                "description": "Get the oldest data point in the feed. This request sets the queue pointer to the beginning of the feed.",
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "last",
+                "operationId": "firstData",
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"

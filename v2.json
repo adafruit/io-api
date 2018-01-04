@@ -568,6 +568,9 @@
                     },
                     {
                         "$ref": "#/parameters/Limit"
+                    },
+                    {
+                        "$ref": "#/parameters/DataInclude"
                     }
                 ],
                 "responses": {
@@ -821,6 +824,9 @@
                     },
                     {
                         "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/DataInclude"
                     }
                 ],
                 "tags": [
@@ -865,6 +871,9 @@
                     },
                     {
                         "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/DataInclude"
                     }
                 ],
                 "tags": [
@@ -909,6 +918,9 @@
                     },
                     {
                         "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/DataInclude"
                     }
                 ],
                 "tags": [
@@ -953,6 +965,9 @@
                     },
                     {
                         "$ref": "#/parameters/FeedPath"
+                    },
+                    {
+                        "$ref": "#/parameters/DataInclude"
                     }
                 ],
                 "tags": [
@@ -999,6 +1014,9 @@
                     },
                     {
                         "$ref": "#/parameters/IDPath"
+                    },
+                    {
+                        "$ref": "#/parameters/DataInclude"
                     }
                 ],
                 "responses": {
@@ -3137,6 +3155,12 @@
             "in": "query",
             "description": "Limit the number of records returned.",
             "type": "integer"
+        },
+        "DataInclude": {
+            "name": "include",
+            "in": "query",
+            "description": "List of Data record fields to include in response as comma separated list. Acceptable values are: `value`, `lat`, `lon`, `ele`, `id`, and `created_at`. ",
+            "type": "string"
         },
         "UsernamePath": {
             "name": "username",

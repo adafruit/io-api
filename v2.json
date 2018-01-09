@@ -948,6 +948,53 @@
                 }
             }
         },
+        "/{username}/feeds/{feed_key}/data/retain": {
+            "get": {
+                "summary": "Last value in feed in MQTT CSV format",
+                "description": "Get the most recent data point in the feed in an MQTT compatible CSV format: `value,lat,lon,ele`",
+                "x-swagger-router-controller": "Data",
+                "x-swagger-router-action": "retain",
+                "operationId": "retainData",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                  "text/csv"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/UsernamePath"
+                    },
+                    {
+                        "$ref": "#/parameters/FeedPath"
+                    }
+                ],
+                "tags": [
+                    "Data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CSV string in `value,lat,lon,ele` format. The lat, lon, and ele values are left blank if they are not set.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
+        },
         "/{username}/feeds/{feed_key}/data/first": {
             "get": {
                 "summary": "First Data in Queue",

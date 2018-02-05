@@ -10,8 +10,9 @@
     <!--style type="text/css"></style-->
 
     <link href="css/index.css" rel="stylesheet"/>
-    <link href='css/standalone.css' rel='stylesheet'/>
-    <link href='css/api-explorer.css' rel='stylesheet' type='text/css'/>
+    <link href="css/standalone.css" rel="stylesheet"/>
+    <link href="css/api-explorer.css" rel="stylesheet" type="text/css"/>
+    <link href="images/favicon.ico" rel="shortcut icon" />
 
     <script src='lib/jquery-1.8.0.min.js' type='text/javascript'></script>
     <script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
@@ -46,6 +47,7 @@
                 url: url,
                 dom_id: "swagger-ui-container",
                 supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+
                 onComplete: function (swaggerApi, swaggerUi) {
 
                     $('pre code').each(function (i, e) {

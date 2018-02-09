@@ -11,7 +11,7 @@ The easiest way to generate a client in a new language ([supported languages lis
 
 ![Swagger file menu](https://github.com/adafruit/io-api/blob/gh-pages/images/swagger-file-menu.png)
 
-The URL to use for the current API is `https://io.adafruit.com/api/docs/v1.json`.
+The URL to use for the current API is `https://io.adafruit.com/api/docs/v2.json`.
 
 Next, select the language you'd like to generate a library for, and download the resulting .zip file.
 

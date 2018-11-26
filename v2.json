@@ -3192,6 +3192,60 @@
                     }
                 }
             }
+        },
+        "/webhooks/feed/:token": {
+            "post": {
+                "summary": "Send data to a feed",
+                "description": "",
+                "x-swagger-router-controller": "WebhookReceivers",
+                "x-swagger-router-action": "create",
+                "x-code-samples": [
+                  {
+                    "lang": "curl",
+                    "source": "curl -F 'value=65.5' https://io.adafruit.com/api/v2/webhooks/feed/12345thistoken"
+                  }
+                ],
+                "operationId": "createWebhookFeedData",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [{
+                    "name": "payload",
+                    "in": "body",
+                    "required": true,
+                    "description": "Webhook payload containing data `value` parameter.",
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }],
+                "tags": [ "Feed", "Data" ],
+                "responses": {
+                    "200": {
+                        "description": "New Data",
+                        "schema": {
+                            "$ref": "#/definitions/Data"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
         }
     },
     "parameters": {

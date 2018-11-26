@@ -3195,7 +3195,7 @@
         },
         "/webhooks/feed/:token": {
             "post": {
-                "summary": "Send data to a feed",
+                "summary": "Send data to a feed via webhook URL.",
                 "description": "",
                 "x-swagger-router-controller": "WebhookReceivers",
                 "x-swagger-router-action": "create",
@@ -3224,10 +3224,10 @@
                         }
                     }
                 }],
-                "tags": [ "Feed", "Data" ],
+                "tags": [ "Webhooks", "Data" ],
                 "responses": {
                     "200": {
-                        "description": "New Data",
+                        "description": "New feed data record",
                         "schema": {
                             "$ref": "#/definitions/Data"
                         }

@@ -3246,6 +3246,46 @@
                     }
                 }
             }
+        },
+        "/webhooks/feed/:token/raw": {
+            "post": {
+                "summary": "Send arbitrary data to a feed via webhook URL.",
+                "description": "The raw data webhook receiver accepts POST requests and stores the raw request body on your feed. This is useful when you don't have control of the webhook sender. If feed history is turned on, payloads will be truncated at 1024 bytes. If feed history is turned off, payloads will be truncated at 100KB.",
+                "x-swagger-router-controller": "WebhookReceivers",
+                "x-swagger-router-action": "createRaw",
+                "x-code-samples": [
+                  {
+                    "lang": "curl",
+                    "source": "curl --header 'Content-Type: application/json' \\\n  --request POST \\\n  --data '{\"some json\": \"goes here\", \"id\": 12345}' \\\n  https://io.adafruit.com/api/v2/webhooks/feed/12345thistoken/raw"
+                  }
+                ],
+                "operationId": "createRawWebhookFeedData",
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "tags": [ "Webhooks", "Data" ],
+                "responses": {
+                    "200": {
+                        "description": "New feed data record",
+                        "schema": {
+                            "$ref": "#/definitions/Data"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            }
         }
     },
     "parameters": {

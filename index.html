@@ -49,11 +49,12 @@
         padding: 0;
         background-color: #000000;
       }
-      #links_container li {
+      #links_container li, #links_container li a {
         display: inline-block;
         padding: 10px;
         color: #00ACEC;
         cursor: pointer;
+        text-decoration: none;
         font-family: 'Proxima Nova', Helvetica, sans;
       }
     </style>
@@ -61,7 +62,9 @@
 
   <body>
     <nav>
-      <ul id="links_container"></ul>
+      <ul id="links_container">
+        <li><a href="https://learn.adafruit.com/welcome-to-adafruit-io/mqtt-api-documentation-2" target="_blank">MQTT API</a></li>
+      </ul>
     </nav>
 
     <redoc scroll-y-offset="body > nav" lazy-rendering="true" expand-responses="200" suppress-warnings="true"></redoc>

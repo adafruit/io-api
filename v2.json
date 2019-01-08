@@ -636,12 +636,17 @@
             "post": {
                 "summary": "Create new Data",
                 "operationId": "createData",
+                "description": "Create new data records on the given feed.\n\n**NOTE:** when feed history is on, data `value` size is limited to 1KB, when feed history is turned off data value size is limited to 100KB.",
                 "x-swagger-router-controller": "Data",
                 "x-swagger-router-action": "create",
                 "x-code-samples": [
                   {
                     "lang": "curl",
                     "source": "curl -F 'value=65.5' -H 'X-AIO-Key: io_key_12345' \\\n  https://io.adafruit.com/api/v2/io_username/feeds/io-feed-key/data"
+                  },
+                  {
+                    "lang": "Ruby",
+                    "source": "api = Adafruit::IO::Client.new(\n  key: ENV['IO_KEY'],\n  username: ENV['IO_USERNAME']\n)\napi.send_data('io-feed-key', 65.5)"
                   }
                 ],
                 "consumes": [

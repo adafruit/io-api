@@ -62,10 +62,10 @@ def template_data(method, path, section)
   [ binding, section['tags'][0] ]
 end
 
+tags = {}
+
 DOCS['paths'].keys.each do |path|
   url_section = DOCS['paths'][path]
-
-  tags = {}
 
   %w(get post put delete).each do |method|
     if url_section[method]
@@ -73,6 +73,7 @@ DOCS['paths'].keys.each do |path|
       filename = "export/_#{ tag.downcase }.md.erb"
 
       if tags[tag].nil?
+        puts "===  #{filename}"
         FileUtils.touch(filename)
         open(filename, 'w') do |f|
           f.puts "# #{ tag }"
@@ -125,7 +126,9 @@ __END__
 
 Parameter |   Type  |  Required |       Description
 --------- | ------- | --------- | -----------------------
-<% parameters['path'].each do |param| %><%= param[:parameter] %> | <%= param[:type] %> | <%= param[:required] %> | <%= param[:description] %><% end %>
+<% parameters['path'].each do |param| %><%= param[:parameter] %> | <%= param[:type] %> | <%= param[:required] %> | <%= param[:description] %>
+<% end %>
+
 <% end %>
 
 
@@ -134,7 +137,9 @@ Parameter |   Type  |  Required |       Description
 
 Parameter |   Type  |  Required |       Description
 --------- | ------- | --------- | -----------------------
-<% parameters['query'].each do |param| %><%= param[:parameter] %> | <%= param[:type] %> | <%= param[:required] %> | <%= param[:description] %><% end %>
+<% parameters['query'].each do |param| %><%= param[:parameter] %> | <%= param[:type] %> | <%= param[:required] %> | <%= param[:description] %>
+<% end %>
+
 <% end %>
 
 
@@ -143,6 +148,8 @@ Parameter |   Type  |  Required |       Description
 
 Parameter |   Type  |  Required |       Description
 --------- | ------- | --------- | -----------------------
-<% parameters['body'].each do |param| %><%= param[:parameter] %> | <%= param[:type] %> | <%= param[:required] %> | <%= param[:description] %><% end %>
+<% parameters['body'].each do |param| %><%= param[:parameter] %> | <%= param[:type] %> | <%= param[:required] %> | <%= param[:description] %>
+<% end %>
+
 <% end %>
 
